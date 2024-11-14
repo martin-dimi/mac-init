@@ -1,5 +1,7 @@
 .DS_Store
-zsh/.zsh_history
 github-copilot
 pgcli
 
+zsh/.zsh_history
+zsh/.zcompdump
+zsh/.zsh_sessions
