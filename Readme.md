@@ -5,18 +5,17 @@
 
 
 # Prerequisits
-* Nvim `brew install nvim`
-* Tmux `brea install tmux`
+```bash
+brew install nvim
+```
 
 # Features
 * [X] Full fledged Nvim support
 * [X] Avante support (similar to Cursor AI)
 * [X] Add markdown support. 
 
-# Cancelled
-* [-] Setup tmux
-
-----
+> [!Warn] Cancelled
+> * Tmux - i use iterm2 for now. no need...
 
 # Potential changes
 * Fuck iterm2, try alternatives like kitty or later on ghost
