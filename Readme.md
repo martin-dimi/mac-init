@@ -6,9 +6,10 @@
 
 # Prerequisits
 ```bash
-brew install nvim
 brew install alacritty
 brew install tmux
+brew install nvim
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ```
 
 # Features
@@ -19,5 +20,5 @@ brew install tmux
 * [X] Add markdown support. 
 
 # Potential changes
-* Fuck iterm2, try alternatives like kitty or later on ghost
-* Potentially try fish
+* Maybe time to leave alacritty. Try ghost when it comes out
+* Potentially try `fish`?
