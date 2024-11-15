@@ -27,6 +27,7 @@ zinit light-mode for \
 
 source $ZDOTDIR/aliases.sh
 source $ZDOTDIR/paths.sh
+[ -f $ZDOTDIR/secrets.sh ] && source $ZDOTDIR/secrets.sh
 
 # Plugins
 zinit light zsh-users/zsh-autosuggestions

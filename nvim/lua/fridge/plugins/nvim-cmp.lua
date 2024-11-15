@@ -37,6 +37,11 @@ return {
           luasnip.lsp_expand(args.body)
         end,
       },
+
+      experimental = {
+        ghost_text = true,
+      },
+
       -- For an understanding of why these mappings were
       -- chosen, you will need to read `:help ins-completion`
       --
@@ -45,14 +50,14 @@ return {
         ['<C-j>'] = cmp.mapping.select_next_item(),
         ['<C-k>'] = cmp.mapping.select_prev_item(),
         ['<CR>'] = cmp.mapping.confirm { select = true },
-        -- ['<Tab>'] = cmp.mapping.confirm { select = true },
-        ["<Tab>"] = vim.schedule_wrap(function(fallback)
-          if cmp.visible() and has_words_before() then
-            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-          else
-            fallback()
-          end
-        end),
+        ['<Tab>'] = cmp.mapping.confirm { select = true },
+        -- ["<Tab>"] = vim.schedule_wrap(function(fallback)
+        --   if cmp.visible() and has_words_before() then
+        --     cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        --   else
+        --     fallback()
+        --   end
+        -- end),
 
         -- ['<Tab>'] = cmp.mapping.select_next_item(),
         -- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
@@ -89,7 +94,7 @@ return {
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
       sources = {
-        { name = "copilot", group_index = 2 },
+        { name = "copilot", group_index = 2, max_item_count = 2 },
         { name = 'buffer',  group_index = 2 },
         { name = 'nvim_lsp', group_index = 2, entry_filter = function(entry)
           local kind = require('cmp.types').lsp.CompletionItemKind

@@ -5,3 +5,4 @@ pgcli
 zsh/.zsh_history
 zsh/.zcompdump
 zsh/.zsh_sessions
+zsh/secrets.sh
