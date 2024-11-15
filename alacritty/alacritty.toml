@@ -1,0 +1,108 @@
+general.import = [
+  # "~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[terminal.shell]
+program = "/opt/homebrew/bin/tmux" # <- Set your path
+# args = ["new-session", "-A", "-s", "🏡 Home"]
+
+[window]
+padding.x = 10
+padding.y = 10
+decorations = "Buttonless"
+
+[font]
+normal.family = "Cascadia Mono NF"
+size=14
+
+[[keyboard.bindings]]
+chars = "\u0001%"
+key = "d"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001\""
+key = "d"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0001w"
+key = "w"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001c"
+key = "t"
+mods = "Command"
+
+# bindkey '^z' history-search-backward
+# bindkey '^p' history-search-forward
+# bindkey '^n' autosuggest-accept
+
+[[keyboard.bindings]]
+chars = "\u001a"  # Ctrl+Z for history-search-backward
+key = "k"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0010"  # Ctrl+P for history-search-forward
+key = "j"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000e"  # Ctrl+N for autosuggest-accept
+key = "l"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00011"
+key = "1"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00012"
+key = "2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00013"
+key = "3"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00014"
+key = "4"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00015"
+key = "5"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00016"
+key = "6"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00017"
+key = "7"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00018"
+key = "8"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00019"
+key = "9"
+mods = "Command"
+
+
