@@ -1,24 +1,24 @@
-
+# My beloved Mac setup 2024
 > [!Note]
 > Current setup that i'm running + my nvim trial period.
 > Don't talk to me if this doesn't work 🙏
 
-
-# Prerequisits
-```bash
-brew install alacritty
-brew install tmux
-brew install nvim
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
-```
-
-# Features
+## Features
+* [X] Pretty via starship
 * [X] Full fledged Nvim support
-* [X] Beutiful font 🧑‍🍳 `Cascadia Mono NF`
-* [X] Tmux built-in with alacritty 
+* [X] Beutiful font 🧑‍🍳 `Cascadia Mono NF` + ligatures
+* [X] Wezterm tmux capabilities 
 * [X] Avante support (similar to Cursor AI)
 * [X] Add markdown support. 
+* [X] Emacs like git support via `fugitive`
 
-# Potential changes
-* Maybe time to leave alacritty. Try ghost when it comes out
+## Prerequisits
+```bash
+brew install wezterm
+brew install nvim
+brew install starship
+```
+
+## TODOs
+* Try ghost terminal. I've left alacritty for WezTerm and so far it's great! 
 * Potentially try `fish`?
