@@ -9,8 +9,8 @@ general.import = [
 TERM = "xterm-256color"
 
 [terminal.shell]
-program = "/opt/homebrew/bin/tmux" # <- Set your path
-# args = ["new-session", "-A", "-s", "🏡 Home"]
+program = "/bin/zsh" 
+args = ["-l", "-c", "tmux attach || tmux"]
 
 [window]
 padding.x = 10
@@ -21,45 +21,61 @@ decorations = "Buttonless"
 normal.family = "Cascadia Mono NF"
 size=14
 
+# \u0001 is my tmux prefix key - C-a
+
+# Open horizontal split
 [[keyboard.bindings]]
 chars = "\u0001%"
 key = "d"
 mods = "Command"
 
+# Open vertical split
 [[keyboard.bindings]]
 chars = "\u0001\""
 key = "d"
 mods = "Command|Shift"
 
+# Close split
 [[keyboard.bindings]]
 chars = "\u0001w"
 key = "w"
 mods = "Command"
 
+# Open new tab
 [[keyboard.bindings]]
 chars = "\u0001c"
 key = "t"
 mods = "Command"
 
-# bindkey '^z' history-search-backward
-# bindkey '^p' history-search-forward
-# bindkey '^n' autosuggest-accept
-
+# search backwards in history on the terminal
 [[keyboard.bindings]]
 chars = "\u001a"  # Ctrl+Z for history-search-backward
 key = "k"
 mods = "Command"
 
+# search forward in history on the terminal
 [[keyboard.bindings]]
 chars = "\u0010"  # Ctrl+P for history-search-forward
 key = "j"
 mods = "Command"
 
+# go to next or previous tab
+[[keyboard.bindings]]
+chars = "\u0001n"  # c-A n for next-tab
+key = "]"
+mods = "Command"
+[[keyboard.bindings]]
+chars = "\u0001p"  # c-A p for previous-tab
+key = "["
+mods = "Command"
+
+# autosuggest-accept
 [[keyboard.bindings]]
 chars = "\u000e"  # Ctrl+N for autosuggest-accept
 key = "l"
 mods = "Command"
 
+# Change tab to specific number
 [[keyboard.bindings]]
 chars = "\u00011"
 key = "1"
