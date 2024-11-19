@@ -4,9 +4,8 @@
 > Don't talk to me if this doesn't work 🙏
 
 ## Screenshots
-![Screenshot 1](./assets/screenshot-1.png)
-![Screenshot 2](./assets/screenshot-2.png)
-![Screenshot 3](./assets/screenshot-3.png)
+![Screenshot 2](./assets/screenshot-2.png){ width=300px height=200px }
+![Screenshot 3](./assets/screenshot-3.png){ width=300px height=200px }
 
 
 ## Features
