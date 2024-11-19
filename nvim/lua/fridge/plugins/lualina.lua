@@ -1,24 +1,74 @@
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {
+    "meuter/lualine-so-fancy.nvim",
+  },
+  lazy = false,
+
   config = function()
     local lualine = require("lualine")
-    local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
     -- configure lualine with modified theme
     lualine.setup({
-      theme = "catppuccin",
-      sections = {
-        lualine_x = {
-          {
-            lazy_status.updates,
-            cond = lazy_status.has_updates,
+      options = {
+        theme = "auto",
+        -- globalstatus = true,
+        icons_enabled = true,
+        component_separators = { left = "|", right = "|" },
+        section_separators = { left = "", right = "" },
+        disabled_filetypes = {
+          statusline = {
+            "alfa-nvim",
+            "help",
+            "neo-tree",
+            "Trouble",
+            "spectre_panel",
+            "toggleterm",
           },
-          { "encoding" },
-          { "fileformat" },
-          { "filetype" },
+          winbar = {},
         },
       },
+
+      -- +-------------------------------------------------+
+      -- | A | B | C                             X | Y | Z |
+      -- +-------------------------------------------------+
+      sections = {
+        lualine_a = {},
+        lualine_b = {
+          "fancy_branch",
+        },
+        lualine_c = {
+          {
+            "filename",
+            path = 1, -- 2 for full path
+            symbols = {
+              modified = "  ",
+              -- readonly = "  ",
+              -- unnamed = "  ",
+            },
+          },
+          { "fancy_diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
+          { "fancy_searchcount" },
+        },
+        lualine_x = {
+          "fancy_lsp_servers",
+          "filetype"
+          -- "fancy_diff",
+          -- "progress",
+        },
+        lualine_y = {},
+        lualine_z = {},
+      },
+
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { "filename" },
+        lualine_y = {},
+        lualine_z = {},
+      },
+      tabline = {},
+      extensions = { "neo-tree", "lazy" },
     })
   end,
 }

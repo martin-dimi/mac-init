@@ -17,30 +17,6 @@ config.window_padding = {
   bottom = 8,
 }
 
--- For example, changing the color scheme:
-config.color_scheme = 'Catppuccin Mocha'
-wezterm.plugin.require("https://github.com/nekowinston/wezterm-bar").apply_to_config(config, {
-  position = "top",
-  max_width = 32,
-  dividers = "slant_right", -- or "slant_left", "arrows", "rounded", false
-  indicator = {
-    leader = { enabled = false },
-    mode = { enabled = false },
-  },
-  tabs = {
-    numerals = "arabic",        -- or "roman"
-    pane_count = "superscript", -- or "subscript", false
-    brackets = {
-      active = { "", ":" },
-      inactive = { "", ":" },
-    },
-  },
-  clock = {           -- note that this overrides the whole set_right_status
-    enabled = true,
-    format = "%H:%M", -- use https://wezfurlong.org/wezterm/config/lua/wezterm.time/Time/format.html
-  },
-})
-
 -- "editor.fontLigatures": "'calt', 'ss01'",
 config.font = wezterm.font({
   family = "Cascadia Code",
@@ -82,6 +58,9 @@ smart_splits.apply_to_config(config, {
     resize = 'META', -- modifier to use for pane resize, e.g. META+h to resize to the left
   },
 })
+
+local theme = require 'theme'
+theme.apply_to_config(config)
 
 -- and finally, return the configuration to wezterm
 return config
