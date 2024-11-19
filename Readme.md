@@ -15,6 +15,7 @@
 ## Prerequisits
 ```bash
 brew install wezterm
+brew install lsd
 brew install nvim
 brew install starship
 ```
