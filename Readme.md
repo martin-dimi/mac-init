@@ -3,11 +3,6 @@
 > Current setup that i'm running + my nvim trial period.
 > Don't talk to me if this doesn't work 🙏
 
-## Screenshots
-![Screenshot 2](./assets/screenshot-2.png){ width=300px height=200px }
-![Screenshot 3](./assets/screenshot-3.png){ width=300px height=200px }
-
-
 ## Features
 * [X] Pretty via starship
 * [X] Full fledged Nvim support
@@ -16,6 +11,10 @@
 * [X] Avante support (similar to Cursor AI)
 * [X] Add markdown support. 
 * [X] Emacs like git support via `fugitive`
+
+## Screenshots
+![Screenshot 2](./assets/screenshot-2.png)
+![Screenshot 3](./assets/screenshot-3.png)
 
 ## Prerequisits
 ```bash
