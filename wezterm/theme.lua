@@ -67,7 +67,7 @@ function module.apply_to_config(config)
       },
     },
     clock = {           -- note that this overrides the whole set_right_status
-      enabled = true,
+      enabled = false,
       format = "%H:%M", -- use https://wezfurlong.org/wezterm/config/lua/wezterm.time/Time/format.html
     },
   })
