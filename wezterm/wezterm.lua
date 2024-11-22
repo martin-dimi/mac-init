@@ -47,6 +47,10 @@ config.keys = {
   { key = "k", mods = "SUPER",       action = wezterm.action { SendString = "\x1A" } },
   { key = "j", mods = "SUPER",       action = wezterm.action { SendString = "\x10" } },
   { key = "l", mods = "SUPER",       action = wezterm.action { SendString = "\x0E" } },
+
+  -- Makes SUPER + SHIFT + < and SUPER + SHIFT + > move current tab MoveTabRelative=-1
+  { key = "<", mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = -1 } },
+  { key = ">", mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = 1 } },
 }
 
 -- Setups pane navigation and resizging so it works with vim too
