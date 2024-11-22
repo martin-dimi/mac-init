@@ -60,9 +60,9 @@ setopt hist_find_no_dups
 
 # Keybindings
 bindkey -e
-bindkey '^z' history-search-backward
-bindkey '^p' history-search-forward
-bindkey '^n' autosuggest-accept
+# bindkey '^x' history-search-backward
+# bindkey '^p' history-search-forward
+# bindkey '^n' autosuggest-accept
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"

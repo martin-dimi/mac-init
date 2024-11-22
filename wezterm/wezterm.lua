@@ -39,18 +39,25 @@ config.font_size = 14.0
 
 -- Keybdings
 config.keys = {
-  { key = "d", mods = "SUPER",       action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
-  { key = "d", mods = "SUPER|SHIFT", action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } } },
-  { key = "w", mods = "SUPER",       action = wezterm.action { CloseCurrentPane = { confirm = false } } },
+  { key = "d",         mods = "SUPER",       action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
+  { key = "d",         mods = "SUPER|SHIFT", action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } } },
+  { key = "w",         mods = "SUPER",       action = wezterm.action { CloseCurrentPane = { confirm = false } } },
 
-  -- Makes history-search using k/j and also autosuggest-accept using l (check zshrc keybindings)
-  { key = "k", mods = "SUPER",       action = wezterm.action { SendString = "\x1A" } },
-  { key = "j", mods = "SUPER",       action = wezterm.action { SendString = "\x10" } },
-  { key = "l", mods = "SUPER",       action = wezterm.action { SendString = "\x0E" } },
+  -- Makes history-search using k/j
+  { key = "k",         mods = "SUPER",       action = wezterm.action { SendString = "\x1B[A" } },
+  { key = "j",         mods = "SUPER",       action = wezterm.action { SendString = "\x1B[B" } },
+  { key = "l",         mods = "SUPER",       action = wezterm.action { SendString = "\x01" } },
 
   -- Makes SUPER + SHIFT + < and SUPER + SHIFT + > move current tab MoveTabRelative=-1
-  { key = "<", mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = -1 } },
-  { key = ">", mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = 1 } },
+  { key = "<",         mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = -1 } },
+  { key = ">",         mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = 1 } },
+
+  -- Make SUPER - h and SUPER - l move cursor back a word or forward a word
+  { key = "h",         mods = "SUPER",       action = wezterm.action { SendString = "\x1Bb" } },
+  { key = "l",         mods = "SUPER",       action = wezterm.action { SendString = "\x1Bf" } },
+
+  -- Make SUPER - Backspace delete a word
+  { key = "Backspace", mods = "SUPER",       action = wezterm.action { SendString = "\x1B\x08" } }
 }
 
 -- Setups pane navigation and resizging so it works with vim too
