@@ -6,7 +6,7 @@
 ## Features
 * [X] Pretty via starship
 * [X] Full fledged Nvim support
-* [X] Beutiful font 🧑‍🍳 `Cascadia Mono NF` + ligatures
+* [X] Beautiful font 🧑‍🍳 `Cascadia Mono NF` + ligatures
 * [X] Wezterm tmux capabilities 
 * [X] Avante support (similar to Cursor AI)
 * [X] Add markdown support. 

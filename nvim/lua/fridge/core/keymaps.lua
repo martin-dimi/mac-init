@@ -15,11 +15,6 @@ keymap.set("n", "<leader><Tab>", "<C-6>", { desc = "Go to prev buffer" })
 keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up" })
 keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down" })
 
--- keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
--- keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
--- keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
--- keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
 -- tabs
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })                     -- open new tab
 keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })              -- close current tab
@@ -29,3 +24,7 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 -- buffers
 keymap.set("n", "<leader>bk", "<cmd>bp<BAR>bd#<CR>", { desc = "Kill current buffer without closing window" })
+
+-- Spell check (add word and fix spelling to first suggestion)
+keymap.set("n", "<leader>csa", "zg", { desc = "Add word to spellcheck" })
+keymap.set("n", "<leader>csf", "1z=", { desc = "Fix spelling" })
