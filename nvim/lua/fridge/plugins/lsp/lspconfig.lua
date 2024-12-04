@@ -1,31 +1,17 @@
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    { "antosha417/nvim-lsp-file-operations", config = true },
-    { "folke/neodev.nvim",                   opts = {} },
-  },
+  dependencies = { "hrsh7th/cmp-nvim-lsp" },
   config = function()
-    -- import lspconfig plugin
-    local lspconfig = require("lspconfig")
-
-    -- import mason_lspconfig plugin
-    local mason_lspconfig = require("mason-lspconfig")
-
-    -- import cmp-nvim-lsp plugin
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-
       callback = function(ev)
         local map = function(keys, func, desc, mode)
           mode = mode or 'n'
           vim.keymap.set(mode, keys, func, { buffer = ev.buf, desc = 'LSP: ' .. desc })
         end
 
-        --  To jump back, press <C-t>.
+        -- NOTE: To jump back, press <C-t>.
         map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
         map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -48,18 +34,10 @@ return {
       end,
     })
 
-    -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    -- Change the Diagnostic symbols in the sign column (gutter)
-    -- (not in youtube nvim video)
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
-
-    mason_lspconfig.setup_handlers({
+    local lspconfig = require("lspconfig")
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    require("mason-lspconfig").setup_handlers {
       -- default handler for installed servers
       function(server_name)
         lspconfig[server_name].setup({
@@ -68,14 +46,13 @@ return {
       end,
 
       ["emmet_ls"] = function()
-        -- configure emmet language server
         lspconfig["emmet_ls"].setup({
           capabilities = capabilities,
           filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
         })
       end,
+
       ["lua_ls"] = function()
-        -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
           capabilities = capabilities,
           settings = {
@@ -91,6 +68,13 @@ return {
           },
         })
       end,
-    })
+    }
+
+    -- Change the Diagnostic symbols in the sign column (gutter)
+    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+    for type, icon in pairs(signs) do
+      local hl = "DiagnosticSign" .. type
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    end
   end,
 }

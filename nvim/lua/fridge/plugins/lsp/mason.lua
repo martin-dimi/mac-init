@@ -7,10 +7,7 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
   },
   config = function()
-    -- import mason
     local mason = require("mason")
-
-    -- import mason-lspconfig
     local mason_lspconfig = require("mason-lspconfig")
 
     -- enable mason and configure icons
@@ -25,16 +22,20 @@ return {
     })
 
     mason_lspconfig.setup({
-      -- list of servers for mason to install
+      automatic_installation = true,
       ensure_installed = {
+        "gopls",
+        "lua_ls",
+
+        -- Web stuff
+        "ts_ls",
         "html",
+        "emmet_ls",
         "cssls",
         "tailwindcss",
-        "lua_ls",
-        "emmet_ls",
-        "dockerls",
-        "gopls",
+
         "jsonls",
+        "dockerls",
       },
     })
   end,

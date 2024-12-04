@@ -5,3 +5,6 @@ config
 lol
 starship
 FileServer
+stdpath
+Neovim
+lspconfig

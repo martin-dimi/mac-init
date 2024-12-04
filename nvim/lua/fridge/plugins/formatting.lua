@@ -6,6 +6,7 @@ return {
 
     conform.setup({
       formatters_by_ft = {
+        go = { "goimports", "gofmt" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
         javascriptreact = { "prettierd", "prettier", stop_after_first = true },
@@ -26,7 +27,7 @@ return {
       },
     })
 
-    vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+    vim.keymap.set({ "n", "v" }, "<leader>cf", function()
       conform.format({
         lsp_fallback = true,
         async = true,

@@ -27,6 +27,12 @@ return {
     local actions = require("telescope.actions")
 
     telescope.setup({
+      pickers = {
+        colorscheme = {
+          enable_preview = true
+        }
+      },
+
       defaults = {
         path_display = { "smart" },
         hidden = true,
@@ -60,9 +66,13 @@ return {
     keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     keymap.set('n', '<leader><leader>', function()
       builtin.buffers({ sort_mru = true, ignore_current_buffer = true })
-    end, { desc = '[ ] Find existing buffers' })
+    end, { desc = 'Find existing buffers' })
 
-    keymap.set('n', '<leader>.', "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
-      { desc = '[S]earch Recent Files ("." for repeat)' })
+    keymap.set(
+      'n',
+      '<leader>.',
+      "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
+      { desc = 'Search Recent Files' }
+    )
   end,
 }

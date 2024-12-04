@@ -45,10 +45,17 @@ function module.apply_to_config(config)
   custom.selection_bg = "#ebdbb2" -- text
 
   config.color_schemes = {
-    ["CustomCatppuccin"] = custom,
+    ["Catppuccin Custom"] = custom,
   }
-  config.color_scheme = "CustomCatppuccin"
+  -- config.color_scheme = "Catppuccin Mocha"
+  config.color_scheme = "Catppuccin Custom"
+  -- config.color_scheme = 'MaterialDarker'
 
+
+  -- rose pine
+  -- local theme = wezterm.plugin.require('https://github.com/neapsix/wezterm').main
+  -- config.colors = theme.colors()
+  -- config.window_frame = theme.window_frame()
 
   wezterm.plugin.require("https://github.com/nekowinston/wezterm-bar").apply_to_config(config, {
     position = "top",
