@@ -44,9 +44,8 @@ config.keys = {
   { key = "w",         mods = "SUPER",       action = wezterm.action { CloseCurrentPane = { confirm = false } } },
 
   -- Makes history-search using k/j
-  { key = "k",         mods = "SUPER",       action = wezterm.action { SendString = "\x1B[A" } },
-  { key = "j",         mods = "SUPER",       action = wezterm.action { SendString = "\x1B[B" } },
-  { key = "l",         mods = "SUPER",       action = wezterm.action { SendString = "\x01" } },
+  { key = "k",         mods = "SUPER",       action = wezterm.action.SendKey { key = 'p', mods = 'CTRL' } },
+  { key = "j",         mods = "SUPER",       action = wezterm.action.SendKey { key = 'n', mods = 'CTRL' } },
 
   -- Makes SUPER + SHIFT + < and SUPER + SHIFT + > move current tab MoveTabRelative=-1
   { key = "<",         mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = -1 } },
@@ -72,6 +71,12 @@ smart_splits.apply_to_config(config, {
 
 local theme = require 'theme'
 theme.apply_to_config(config)
+
+-- config.color_scheme = 'Rosé Pine Dawn (Gogh)'
+-- config.color_scheme = 'Catppuccin Macchiato'
+
+-- local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
+-- bar.apply_to_config(config)
 
 -- and finally, return the configuration to wezterm
 return config

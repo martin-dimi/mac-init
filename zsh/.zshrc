@@ -60,8 +60,8 @@ setopt hist_find_no_dups
 
 # Keybindings
 bindkey -e
-# bindkey '^x' history-search-backward
-# bindkey '^p' history-search-forward
+bindkey '^n' history-search-backward
+bindkey '^p' history-search-forward
 # bindkey '^n' autosuggest-accept
 
 eval "$(fzf --zsh)"

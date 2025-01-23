@@ -186,3 +186,8 @@ alt-shift-l = ['join-with right', 'mode main']
 # [[on-window-detected]]
 # if.app-id = "com.spotify.client"
 # run = "move-node-to-workspace M"
+
+# Fix for ghostty
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+run = "layout floating"

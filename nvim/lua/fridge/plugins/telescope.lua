@@ -64,6 +64,8 @@ return {
     keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
     keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
+    keymap.set('n', '<leader>st', builtin.colorscheme, { desc = '[S]earch [T]heme' })
+
     keymap.set('n', '<leader><leader>', function()
       builtin.buffers({ sort_mru = true, ignore_current_buffer = true })
     end, { desc = 'Find existing buffers' })

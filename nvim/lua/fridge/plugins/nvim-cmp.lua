@@ -71,7 +71,7 @@ return {
       formatting = {
         fields = { 'menu', 'abbr', 'kind' },
         expandable_indicator = false,
-        format = lspkind.cmp_format({
+        format = require("lspkind").cmp_format({
           mode = "symbol",
           max_width = 50,
           symbol_map = { Copilot = "" }

@@ -47,5 +47,7 @@ return {
   } },
   config = function()
     require("copilot_cmp").setup()
+
+    vim.keymap.set("n", "<leader>cct", "<cmd>Copilot toggle<CR>", { desc = "Toggle Copilot" })
   end
 }
