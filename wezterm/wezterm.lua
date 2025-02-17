@@ -44,8 +44,8 @@ config.keys = {
   { key = "w",         mods = "SUPER",       action = wezterm.action { CloseCurrentPane = { confirm = false } } },
 
   -- Makes history-search using k/j
-  { key = "k",         mods = "SUPER",       action = wezterm.action.SendKey { key = 'p', mods = 'CTRL' } },
-  { key = "j",         mods = "SUPER",       action = wezterm.action.SendKey { key = 'n', mods = 'CTRL' } },
+  { key = "j",         mods = "SUPER",       action = wezterm.action.SendKey { key = 'p', mods = 'CTRL' } },
+  { key = "k",         mods = "SUPER",       action = wezterm.action.SendKey { key = 'n', mods = 'CTRL' } },
 
   -- Makes SUPER + SHIFT + < and SUPER + SHIFT + > move current tab MoveTabRelative=-1
   { key = "<",         mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = -1 } },
