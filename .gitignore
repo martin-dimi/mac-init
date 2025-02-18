@@ -1,8 +1,11 @@
 .DS_Store
 github-copilot
 pgcli
+gcloud
 
 zsh/.zsh_history
 zsh/.zcompdump
 zsh/.zsh_sessions
 zsh/secrets.sh
+zsh/gcloud.sh
+
