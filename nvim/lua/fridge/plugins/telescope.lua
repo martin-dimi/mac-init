@@ -3,19 +3,7 @@ return {
   branch = "0.1.x",
   dependencies = {
     'nvim-lua/plenary.nvim',
-    { -- If encountering errors, see telescope-fzf-native README for installation instructions
-      'nvim-telescope/telescope-fzf-native.nvim',
-
-      -- `build` is used to run some command when the plugin is installed/updated.
-      -- This is only run then, not every time Neovim starts up.
-      build = 'make',
-
-      -- `cond` is a condition used to determine whether this plugin should be
-      -- installed and loaded.
-      cond = function()
-        return vim.fn.executable 'make' == 1
-      end,
-    },
+    { 'nvim-telescope/telescope-fzf-native.nvim',  build = 'make' },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-telescope/telescope-file-browser.nvim' },
 
@@ -28,13 +16,17 @@ return {
 
     telescope.setup({
       pickers = {
+        find_files = { theme = "ivy" },
+        grep_string = { theme = "ivy" },
+        live_grep = { theme = "ivy" },
+        diagnostics = { theme = "ivy" },
         colorscheme = {
           enable_preview = true
-        }
+        },
       },
 
       defaults = {
-        path_display = { "smart" },
+        path_display = { "truncate" },
         hidden = true,
         mappings = {
           i = {
@@ -54,20 +46,20 @@ return {
 
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
-    local builtin = require 'telescope.builtin'
+    local telescope = require('telescope.builtin')
 
 
-    keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-    keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-    keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-    keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-    keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-    keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-    keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-    keymap.set('n', '<leader>st', builtin.colorscheme, { desc = '[S]earch [T]heme' })
+    keymap.set('n', '<leader>sh', telescope.help_tags, { desc = '[S]earch [H]elp' })
+    keymap.set('n', '<leader>sk', telescope.keymaps, { desc = '[S]earch [K]eymaps' })
+    keymap.set('n', '<leader>sf', telescope.find_files, { desc = '[S]earch [F]iles' })
+    keymap.set('n', '<leader>sw', telescope.grep_string, { desc = '[S]earch current [W]ord' })
+    keymap.set('n', '<leader>sg', telescope.live_grep, { desc = '[S]earch by [G]rep' })
+    keymap.set('n', '<leader>sd', telescope.diagnostics, { desc = '[S]earch [D]iagnostics' })
+    keymap.set('n', '<leader>sr', telescope.resume, { desc = '[S]earch [R]esume' })
+    keymap.set('n', '<leader>st', telescope.colorscheme, { desc = '[S]earch [T]heme' })
 
     keymap.set('n', '<leader><leader>', function()
-      builtin.buffers({ sort_mru = true, ignore_current_buffer = true })
+      telescope.buffers({ sort_mru = true, ignore_current_buffer = true })
     end, { desc = 'Find existing buffers' })
 
     keymap.set(
