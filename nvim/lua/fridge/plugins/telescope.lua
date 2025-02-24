@@ -49,18 +49,25 @@ return {
     local telescope = require('telescope.builtin')
 
 
-    keymap.set('n', '<leader>sh', telescope.help_tags, { desc = '[S]earch [H]elp' })
-    keymap.set('n', '<leader>sk', telescope.keymaps, { desc = '[S]earch [K]eymaps' })
-    keymap.set('n', '<leader>sf', telescope.find_files, { desc = '[S]earch [F]iles' })
-    keymap.set('n', '<leader>sw', telescope.grep_string, { desc = '[S]earch current [W]ord' })
-    keymap.set('n', '<leader>sg', telescope.live_grep, { desc = '[S]earch by [G]rep' })
-    keymap.set('n', '<leader>sd', telescope.diagnostics, { desc = '[S]earch [D]iagnostics' })
-    keymap.set('n', '<leader>sr', telescope.resume, { desc = '[S]earch [R]esume' })
-    keymap.set('n', '<leader>st', telescope.colorscheme, { desc = '[S]earch [T]heme' })
+    -- Search
+    -- keymap.set('n', '<leader>sh', telescope.help_tags, { desc = '[S]earch [H]elp' })
+    -- keymap.set('n', '<leader>sk', telescope.keymaps, { desc = '[S]earch [K]eymaps' })
+    -- keymap.set('n', '<leader>sf', telescope.find_files, { desc = '[S]earch [F]iles' })
+    -- keymap.set('n', '<leader>sw', telescope.grep_string, { desc = '[S]earch current [W]ord' })
+    -- keymap.set('n', '<leader>sg', telescope.live_grep, { desc = '[S]earch by [G]rep' })
+    -- keymap.set('n', '<leader>sd', telescope.diagnostics, { desc = '[S]earch [D]iagnostics' })
+    -- keymap.set('n', '<leader>sr', telescope.resume, { desc = '[S]earch [R]esume' })
+    -- keymap.set('n', '<leader>st', telescope.colorscheme, { desc = '[S]earch [T]heme' })
+    --
+    -- -- Git
+    -- keymap.set('n', '<leader>gb', telescope.git_branches, { desc = '[G]it [B]ranches' })
+    -- keymap.set('n', '<leader>gl', telescope.git_commits, { desc = '[G]it [L]og' })
+    -- keymap.set('n', '<leader>gs', telescope.git_status, { desc = '[G]it [S]tatus' })
 
-    keymap.set('n', '<leader><leader>', function()
-      telescope.buffers({ sort_mru = true, ignore_current_buffer = true })
-    end, { desc = 'Find existing buffers' })
+
+    -- keymap.set('n', '<leader><leader>', function()
+    --   telescope.buffers({ sort_mru = true, ignore_current_buffer = true })
+    -- end, { desc = 'Find existing buffers' })
 
     keymap.set(
       'n',

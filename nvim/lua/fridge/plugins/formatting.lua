@@ -5,13 +5,6 @@ return {
     local conform = require("conform")
 
     conform.setup({
-      default_format_opts = {
-        timeout_ms = 3000,
-        async = false,           -- not recommended to change
-        quiet = false,           -- not recommended to change
-        lsp_format = "fallback", -- not recommended to change
-      },
-
       formatters_by_ft = {
         go = { "goimports", "gofmt" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -26,6 +19,14 @@ return {
         liquid = { "prettier" },
         lua = { "stylua" },
         sql = { "sqlfmt" },
+      },
+
+      format_on_save = {
+        lsp_fallback = true,
+        lsp_format = "fallback",
+        async = false,         -- not recommended to change
+        quiet = false,         -- not recommended to change
+        timeout_ms = 3000,
       },
     })
 
