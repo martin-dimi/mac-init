@@ -1,16 +1,26 @@
+---@module "snacks"
 return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
 
+  ---@type snacks.Config
   opts = {
+    styles = {
+      custom_scratch = {
+        relative = "editor",
+        width = 0.9,
+        height = 0.9,
+        buf = 1,
+      }
+    },
+
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
     explorer = { enabled = true },
     picker = {
       enabled = true,
-      preset = "ivy",
       layout = {
         position = "bottom",
         preset = "ivy",
@@ -30,27 +40,25 @@ return {
     dim = { enabled = true },
     toggle = { enabled = true },
     input = { enabled = true },
-    -- indent = { enabled = true },
-
-    -- bigfile = { enabled = true },
-    -- dashboard = { enabled = true },
-    -- notifier = { enabled = true },
-    -- quickfile = { enabled = true },
-    -- scope = { enabled = true },
-    -- scroll = { enabled = true },
-    -- statuscolumn = { enabled = true },
-    -- words = { enabled = true },
+    scroll = { enabled = true },
+    scratch = {
+      enabled = true,
+      root = "~/.scratch",
+      win = {
+        relative = "editor",
+        style = "custom_scratch",
+      },
+    },
   },
   keys = {
     -- Picker
     { "<leader>e",       function() Snacks.explorer() end,            desc = "File Explorer" },
-
-    -- Top Pickers & Explorer
     { "<leader><space>", function() Snacks.picker.buffers() end,      desc = "Smart Find Files" },
     { "<leader>sf",      function() Snacks.picker.files() end,        desc = "Find Files" },
     { "<leader>sg",      function() Snacks.picker.grep() end,         desc = "Grep" },
     { "<leader>.",       function() Snacks.picker.recent() end,       desc = "Recent" },
     { "<leader>sr",      function() Snacks.picker.resume() end,       desc = "Resume" },
+    { "<leader>sh",      function() Snacks.picker.help() end,         desc = "Help Pages" },
 
     -- git
     { "<leader>gb",      function() Snacks.picker.git_branches() end, desc = "Git Branches" },
@@ -60,6 +68,24 @@ return {
     { "<leader>gS",      function() Snacks.picker.git_stash() end,    desc = "Git Stash" },
     { "<leader>gd",      function() Snacks.picker.git_diff() end,     desc = "Git Diff (Hunks)" },
     { "<leader>gf",      function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
+
+    -- Scratch
+    {
+      "<leader>bs",
+      function()
+        local scratch_dir = vim.fn.expand("~/.scratch")
+        if vim.fn.isdirectory(scratch_dir) == 0 then
+          vim.fn.mkdir(scratch_dir, "p")
+        end
+        local date = os.date("%d-%m-%Y")
+        Snacks.scratch.open({
+          ft = "markdown",
+          file = string.format("%s/%s.md", scratch_dir, date),
+        })
+      end,
+      desc = "Toggle Scratch Buffer"
+    },
+    { "<leader>bS", function() Snacks.picker.files({ cwd = "~/.scratch" }) end, desc = "Select Scratch Buffer" },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
