@@ -24,18 +24,31 @@ return {
       format_on_save = {
         lsp_fallback = true,
         lsp_format = "fallback",
-        async = false,         -- not recommended to change
-        quiet = false,         -- not recommended to change
+        async = false, -- not recommended to change
+        quiet = false, -- not recommended to change
         timeout_ms = 3000,
       },
     })
 
-    vim.keymap.set({ "n", "v" }, "<leader>cf", function()
-      conform.format({
-        lsp_fallback = true,
-        async = true,
-        timeout_ms = 1000,
-      })
-    end, { desc = "Format file or range (in visual mode)" })
+    -- JSON Formatter for selected text
+    vim.keymap.set("v", "<leader>cj", function()
+      -- Save selected text
+      local start_pos = vim.fn.getpos("'<")
+      local end_pos = vim.fn.getpos("'>")
+
+      -- Get lines in the selection
+      local lines = vim.api.nvim_buf_get_lines(0, start_pos[2] - 1, end_pos[2], false)
+      local text = table.concat(lines, "\n")
+
+      -- Run JSON formatting
+      local json_ok, formatted = pcall(vim.fn.system, { "prettier", "--parser", "json" }, text)
+
+      if json_ok and formatted then
+        -- Replace selection with formatted text
+        vim.api.nvim_buf_set_lines(0, start_pos[2] - 1, end_pos[2], false, vim.split(formatted, "\n"))
+      else
+        vim.notify("JSON formatting failed", vim.log.levels.ERROR)
+      end
+    end, { desc = "Format selected JSON" })
   end,
 }
