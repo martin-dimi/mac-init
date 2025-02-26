@@ -4,8 +4,10 @@ local wezterm = require 'wezterm'
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+config.max_fps = 120
+
 -- This is where you actually apply your config choices
-config.enable_tab_bar = true
+config.enable_tab_bar = false
 config.use_fancy_tab_bar = true
 
 config.window_close_confirmation = 'NeverPrompt'
@@ -36,6 +38,17 @@ config.font = wezterm.font({
 })
 config.font_size = 14.0
 
+wezterm.on("toggle-tabbar", function(window, _)
+  local overrides = window:get_config_overrides() or {}
+  if overrides.enable_tab_bar == false then
+    wezterm.log_info("tab bar shown")
+    overrides.enable_tab_bar = true
+  else
+    wezterm.log_info("tab bar hidden")
+    overrides.enable_tab_bar = false
+  end
+  window:set_config_overrides(overrides)
+end)
 
 -- Keybdings
 config.keys = {
@@ -56,7 +69,10 @@ config.keys = {
   { key = "l",         mods = "SUPER",       action = wezterm.action { SendString = "\x1Bf" } },
 
   -- Make SUPER - Backspace delete a word
-  { key = "Backspace", mods = "SUPER",       action = wezterm.action { SendString = "\x1B\x08" } }
+  { key = "Backspace", mods = "SUPER",       action = wezterm.action { SendString = "\x1B\x08" } },
+
+  -- Toggle tabs
+  { key = "9",         mods = "SUPER",       action = wezterm.action.EmitEvent("toggle-tabbar") }
 }
 
 -- Setups pane navigation and resizging so it works with vim too
@@ -72,11 +88,4 @@ smart_splits.apply_to_config(config, {
 local theme = require 'theme'
 theme.apply_to_config(config)
 
--- config.color_scheme = 'Rosé Pine Dawn (Gogh)'
--- config.color_scheme = 'Catppuccin Macchiato'
-
--- local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
--- bar.apply_to_config(config)
-
--- and finally, return the configuration to wezterm
 return config

@@ -9,8 +9,8 @@ return {
     styles = {
       custom_scratch = {
         relative = "editor",
-        width = 0.9,
-        height = 0.9,
+        width = 0.95,
+        height = 0.95,
         buf = 1,
       }
     },
@@ -58,6 +58,7 @@ return {
     { "<leader>.",       function() Snacks.picker.recent() end,       desc = "Recent" },
     { "<leader>sr",      function() Snacks.picker.resume() end,       desc = "Resume" },
     { "<leader>sh",      function() Snacks.picker.help() end,         desc = "Help Pages" },
+    { "<leader>st",      function() Snacks.picker.colorschemes() end, desc = "Themes" },
 
     -- git
     { "<leader>gb",      function() Snacks.picker.git_branches() end, desc = "Git Branches" },

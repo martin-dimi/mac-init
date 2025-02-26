@@ -83,9 +83,14 @@ function module.apply_to_config(config)
     ["Catppuccin Latte Custom"] = latte,
   }
 
-  -- Set your default theme here
-  config.color_scheme = "Catppuccin Mocha Custom" -- or "Catppuccin Latte Custom"
-  -- config.color_scheme = "Catppuccin Latte Custom" -- or "Catppuccin Latte Custom"
+  -- Colorscheme
+  local file = io.open("/Users/fridge/.config/wezterm/colorscheme", "r")
+  if file then
+    config.color_scheme = file:read("*a")
+    file:close()
+  else
+    config.color_scheme = "Catppuccin Mocha Custom"
+  end
 
   -- local theme = require('rosepine').dawn
   -- config.colors = theme.colors()
