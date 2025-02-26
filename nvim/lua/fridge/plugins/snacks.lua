@@ -40,7 +40,6 @@ return {
     dim = { enabled = true },
     toggle = { enabled = true },
     input = { enabled = true },
-    scroll = { enabled = true },
     scratch = {
       enabled = true,
       root = "~/.scratch",
