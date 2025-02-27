@@ -36,7 +36,7 @@ config.font = wezterm.font({
     "ss09"  -- >>= <<= ||= |= ligatures
   }
 })
-config.font_size = 14.0
+config.font_size = 16.0
 
 wezterm.on("toggle-tabbar", function(window, _)
   local overrides = window:get_config_overrides() or {}
