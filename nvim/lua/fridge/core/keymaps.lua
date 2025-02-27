@@ -27,6 +27,7 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 -- buffers
 keymap.set("n", "<leader>bk", "<cmd>bp<BAR>bd#<CR>", { desc = "Kill current buffer without closing window" })
+keymap.set("n", "<leader>br", "<cmd>e!<CR>", { desc = "Refresh current buffer from disk" })
 
 -- Spell check (add word and fix spelling to first suggestion)
 keymap.set("n", "<leader>csa", "zg", { desc = "Add word to spellcheck" })
