@@ -51,23 +51,46 @@ return {
   },
   keys = {
     -- Picker
-    { "<leader>e",       function() Snacks.explorer() end,                                desc = "File Explorer" },
-    { "<leader><space>", function() Snacks.picker.buffers() end,                          desc = "Smart Find Files" },
+    { "<leader>e",       function() Snacks.explorer() end,                                  desc = "File Explorer" },
+    { "<leader><space>", function() Snacks.picker.buffers() end,                            desc = "Smart Find Files" },
     { "<leader>sf",      function() Snacks.picker.files({ exclude = { "*_test.go" } }) end, desc = "Find Files" },
-    { "<leader>sg",      function() Snacks.picker.grep({ exclude = { "*_test.go" } }) end, desc = "Grep" },
-    { "<leader>.",       function() Snacks.picker.recent() end,                           desc = "Recent" },
-    { "<leader>sr",      function() Snacks.picker.resume() end,                           desc = "Resume" },
-    { "<leader>sh",      function() Snacks.picker.help() end,                             desc = "Help Pages" },
-    { "<leader>st",      function() Snacks.picker.colorschemes() end,                     desc = "Themes" },
+    { "<leader>sg",      function() Snacks.picker.grep({ exclude = { "*_test.go" } }) end,  desc = "Grep" },
+    { "<leader>.",       function() Snacks.picker.recent() end,                             desc = "Recent" },
+    { "<leader>sr",      function() Snacks.picker.resume() end,                             desc = "Resume" },
+    { "<leader>sh",      function() Snacks.picker.help() end,                               desc = "Help Pages" },
+    { "<leader>st",      function() Snacks.picker.colorschemes() end,                       desc = "Themes" },
+    {
+      "<leader>sG",
+      function()
+        -- Get a list of all directories in the workspace
+        local workspace_path = vim.fn.getcwd()
+        local directories = vim.fn.systemlist("find " .. workspace_path .. " -type d")
+
+        -- Present the directories to the user for selection
+        vim.ui.select(directories, {
+          prompt = "Select a directory:",
+          format_item = function(item)
+            return item
+          end,
+        }, function(choice)
+          if choice then
+            Snacks.picker.grep({ dirs = { choice } })
+          else
+            print("No directory selected")
+          end
+        end)
+      end,
+      desc = "Grep in directory"
+    },
 
     -- git
-    { "<leader>gb",      function() Snacks.picker.git_branches() end,                     desc = "Git Branches" },
-    { "<leader>gl",      function() Snacks.picker.git_log() end,                          desc = "Git Log" },
-    { "<leader>gL",      function() Snacks.picker.git_log_line() end,                     desc = "Git Log Line" },
-    { "<leader>gs",      function() Snacks.picker.git_status() end,                       desc = "Git Status" },
-    { "<leader>gS",      function() Snacks.picker.git_stash() end,                        desc = "Git Stash" },
-    { "<leader>gd",      function() Snacks.picker.git_diff() end,                         desc = "Git Diff (Hunks)" },
-    { "<leader>gf",      function() Snacks.picker.git_log_file() end,                     desc = "Git Log File" },
+    { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
+    { "<leader>gl", function() Snacks.picker.git_log() end,      desc = "Git Log" },
+    { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
+    { "<leader>gs", function() Snacks.picker.git_status() end,   desc = "Git Status" },
+    { "<leader>gS", function() Snacks.picker.git_stash() end,    desc = "Git Stash" },
+    { "<leader>gd", function() Snacks.picker.git_diff() end,     desc = "Git Diff (Hunks)" },
+    { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
 
     -- Scratch
     {

@@ -29,6 +29,7 @@ source $ZDOTDIR/aliases.sh
 source $ZDOTDIR/paths.sh
 [ -f $ZDOTDIR/secrets.sh ] && source $ZDOTDIR/secrets.sh
 [ -f $ZDOTDIR/userled.sh ] && source $ZDOTDIR/userled.sh
+[ -f $ZDOTDIR/conda.sh ] && source $ZDOTDIR/conda.sh
 
 # Plugins
 zinit light zsh-users/zsh-autosuggestions
