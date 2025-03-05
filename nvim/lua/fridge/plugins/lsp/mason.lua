@@ -33,6 +33,10 @@ return {
         "cssls",
         "tailwindcss",
 
+        -- Python
+        "ruff",
+        "pyright",
+
         "jsonls",
         "dockerls",
       },

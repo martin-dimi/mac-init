@@ -64,11 +64,10 @@ setopt hist_find_no_dups
 bindkey -e
 bindkey '^n' history-search-backward
 bindkey '^p' history-search-forward
-# bindkey '^n' autosuggest-accept
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completio
+export NVM_COMPLETION=true
+export NVM_SYMLINK_CURRENT="true"
+zinit wait lucid light-mode for lukechilds/zsh-nvm

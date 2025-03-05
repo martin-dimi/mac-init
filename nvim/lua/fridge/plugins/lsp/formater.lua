@@ -22,6 +22,8 @@ return {
           markdown = { "prettier" },
           json = { "prettierd", "prettier", stop_after_first = true },
           yaml = { "prettierd", "prettier", stop_after_first = true },
+
+          python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
         },
 
         format_on_save = {
