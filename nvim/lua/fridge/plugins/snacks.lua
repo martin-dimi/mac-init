@@ -51,14 +51,24 @@ return {
   },
   keys = {
     -- Picker
-    { "<leader>e",       function() Snacks.explorer() end,                                  desc = "File Explorer" },
-    { "<leader><space>", function() Snacks.picker.buffers() end,                            desc = "Smart Find Files" },
-    { "<leader>sf",      function() Snacks.picker.files({ exclude = { "*_test.go" } }) end, desc = "Find Files" },
-    { "<leader>sg",      function() Snacks.picker.grep({ exclude = { "*_test.go" } }) end,  desc = "Grep" },
-    { "<leader>.",       function() Snacks.picker.recent() end,                             desc = "Recent" },
-    { "<leader>sr",      function() Snacks.picker.resume() end,                             desc = "Resume" },
-    { "<leader>sh",      function() Snacks.picker.help() end,                               desc = "Help Pages" },
-    { "<leader>st",      function() Snacks.picker.colorschemes() end,                       desc = "Themes" },
+    { "<leader>e",  function() Snacks.explorer() end,                                  desc = "File Explorer" },
+    {
+      "<leader><space>",
+      function()
+        Snacks.picker.buffers({
+          keys = {
+            ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
+          }
+        })
+      end,
+      desc = "Smart Find Files"
+    },
+    { "<leader>sf", function() Snacks.picker.files({ exclude = { "*_test.go" } }) end, desc = "Find Files" },
+    { "<leader>sg", function() Snacks.picker.grep({ exclude = { "*_test.go" } }) end,  desc = "Grep" },
+    { "<leader>.",  function() Snacks.picker.recent() end,                             desc = "Recent" },
+    { "<leader>sr", function() Snacks.picker.resume() end,                             desc = "Resume" },
+    { "<leader>sh", function() Snacks.picker.help() end,                               desc = "Help Pages" },
+    { "<leader>st", function() Snacks.picker.colorschemes() end,                       desc = "Themes" },
     {
       "<leader>sG",
       function()
@@ -110,6 +120,7 @@ return {
     },
     { "<leader>bS", function() Snacks.picker.files({ cwd = "~/.scratch" }) end, desc = "Select Scratch Buffer" },
   },
+
   init = function()
     vim.api.nvim_create_autocmd("User", {
       pattern = "VeryLazy",
