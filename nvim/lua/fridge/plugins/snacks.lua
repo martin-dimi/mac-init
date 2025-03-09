@@ -1,4 +1,6 @@
+---@diagnostic disable: missing-fields
 ---@module "snacks"
+
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -42,7 +44,7 @@ return {
     input = { enabled = true },
     scratch = {
       enabled = true,
-      root = "~/.scratch",
+      root = os.getenv("NOTES"),
       win = {
         relative = "editor",
         style = "custom_scratch",
@@ -106,11 +108,11 @@ return {
     {
       "<leader>bs",
       function()
-        local scratch_dir = vim.fn.expand("~/.scratch")
+        local scratch_dir = (os.getenv("NOTES") or "~/.notes") .. "/Daily"
         if vim.fn.isdirectory(scratch_dir) == 0 then
           vim.fn.mkdir(scratch_dir, "p")
         end
-        local date = os.date("%d-%m-%Y")
+        local date = os.date("%Y-%m-%d")
         Snacks.scratch.open({
           ft = "markdown",
           file = string.format("%s/%s.md", scratch_dir, date),
@@ -118,7 +120,7 @@ return {
       end,
       desc = "Toggle Scratch Buffer"
     },
-    { "<leader>bS", function() Snacks.picker.files({ cwd = "~/.scratch" }) end, desc = "Select Scratch Buffer" },
+    { "<leader>bS", function() Snacks.picker.files({ cwd = os.getenv("NOTES") }) end, desc = "Select Scratch Buffer" },
   },
 
   init = function()
