@@ -58,8 +58,12 @@ return {
       "<leader><space>",
       function()
         Snacks.picker.buffers({
-          keys = {
-            ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
+          win = {
+            input = {
+              keys = {
+                ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
+              }
+            }
           }
         })
       end,
