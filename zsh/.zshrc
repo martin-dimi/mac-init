@@ -22,8 +22,13 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
-
 ### End of Zinit's installer chunk
+
+# NOTE FZF
+eval "$(fzf --zsh)"
+export FZF_DEFAULT_COMMAND='fd --hidden --strip-cwd-prefix -E .git -E "{*.ttf,*.png}"'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='--height 50% --layout=default --border --color=hl:#2dd4bf'
 
 source $ZDOTDIR/aliases.sh
 source $ZDOTDIR/paths.sh
@@ -66,12 +71,6 @@ bindkey '^n' history-search-backward
 bindkey '^p' history-search-forward
 
 eval "$(zoxide init --cmd cd zsh)"
-
-# NOTE FZF
-eval "$(fzf --zsh)"
-export FZF_DEFAULT_COMMAND='fd --hidden --strip-cwd-prefix --exclude .git'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--height 50% --layout=default --border --color=hl:#2dd4bf'
 
 export NVM_COMPLETION=true
 export NVM_SYMLINK_CURRENT="true"

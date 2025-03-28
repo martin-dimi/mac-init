@@ -2,6 +2,13 @@ alias ls='lsd'
 alias ll='lsd -al'
 
 alias vim='nvim'
+v() {
+  local file
+  file=$(eval $FZF_DEFAULT_COMMAND | fzf)
+  if [[ -n $file ]]; then
+    nvim "$file"
+  fi
+}
 
 alias conf='cd ~/.config'
 alias nconf='cd ~/.config/nvim'
