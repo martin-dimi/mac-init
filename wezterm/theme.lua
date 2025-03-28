@@ -3,8 +3,7 @@ local wezterm = require("wezterm")
 -- This is the module table that we will export
 local module = {}
 
-function module.apply_to_config(config)
-  -- Dark theme (Mocha)
+function Dark()
   local mocha = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
   mocha.foreground = "#ebdbb2" -- text
   mocha.background = "#1d2021" -- base
@@ -39,10 +38,16 @@ function module.apply_to_config(config)
   mocha.selection_fg = "#1d2021" -- base
   mocha.selection_bg = "#ebdbb2" -- text
 
-  -- Light theme (Latte)
+  return mocha
+end
+
+function Light()
   local latte = wezterm.color.get_builtin_schemes()["Catppuccin Latte"]
   latte.foreground = "#4c4f69" -- text
   latte.background = "#eff1f5" -- base
+  latte.cursor_fg = 'white'
+  latte.cursor_bg = '#1e66f5'
+  latte.cursor_border = '#1e66f5'
 
   -- Latte ANSI Colors
   latte.ansi = {
@@ -78,45 +83,31 @@ function module.apply_to_config(config)
   latte.selection_fg = "#eff1f5" -- base
   latte.selection_bg = "#4c4f69" -- text
 
-  config.color_schemes = {
-    ["Catppuccin Mocha Custom"] = mocha,
-    ["Catppuccin Latte Custom"] = latte,
-  }
+  return latte
+end
 
-  -- Colorscheme
+function module.apply_to_config(config)
+  local dark = Dark()
+  local light = Light()
+
+  local theme = dark
+  config.color_schemes = {
+    ["Light"] = light,
+    ["Dark"] = dark,
+  }
   local file = io.open("/Users/fridge/.config/wezterm/colorscheme", "r")
   if file then
-    config.color_scheme = file:read("*a")
+    local theme_name = file:read("*a")
+    print("Using colorscheme: " .. theme_name)
+    config.color_scheme = theme_name
+    theme = config.color_schemes[config.color_scheme]
     file:close()
   else
-    config.color_scheme = "Catppuccin Mocha Custom"
+    print("No colorscheme file found, using default")
+    config.color_scheme = "Catppuccin Mocha"
   end
 
-  -- local theme = require('rosepine').dawn
-  -- config.colors = theme.colors()
-  -- config.window_frame = theme.window_frame() -- needed only if using fancy tab bar
-
-  wezterm.plugin.require("https://github.com/nekowinston/wezterm-bar").apply_to_config(config, {
-    position = "top",
-    max_width = 32,
-    dividers = false, -- or "slant_left", "arrows", "rounded", false
-    indicator = {
-      leader = { enabled = false },
-      mode = { enabled = false },
-    },
-    tabs = {
-      numerals = "arabic",        -- or "roman"
-      pane_count = "superscript", -- or "subscript", false
-      brackets = {
-        active = { "", ":" },
-        inactive = { "", ":" },
-      },
-    },
-    clock = {           -- note that this overrides the whole set_right_status
-      enabled = false,
-      format = "%H:%M", -- use https://wezfurlong.org/wezterm/config/lua/wezterm.time/Time/format.html
-    },
-  })
+  return theme
 end
 
 return module

@@ -1,10 +1,35 @@
+local HOME = os.getenv("HOME")
+
+local getTheme = function()
+  local filename = vim.fn.expand(HOME .. "/.config/wezterm/colorscheme")
+  local file = io.open(filename, "r")
+  assert(file)
+  local theme = file:read("*all")
+  file:close()
+  return theme
+end
+
+local setTheme = function(theme)
+  local filename = vim.fn.expand(HOME .. "/.config/wezterm/colorscheme")
+  local file = io.open(filename, "w")
+  assert(file)
+  file:write(theme)
+  file:close()
+end
+
+vim.api.nvim_create_autocmd("OptionSet", {
+  group = vim.api.nvim_create_augroup("wezterm_background", { clear = true }),
+  pattern = "background", -- Listen specifically for changes to the 'background' option
+  callback = function()
+    if vim.o.background == "light" then
+      setTheme("Light")
+    else
+      setTheme("Dark")
+    end
+  end
+})
+
 return {
-  { "rebelot/kanagawa.nvim" },
-  { "marko-cerovac/material.nvim" },
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-  },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -49,18 +74,11 @@ return {
         show_end_of_buffer = false,
         integration_default = false,
         integrations = {
-          barbecue = { dim_dirname = true, bold_basename = true, dim_context = false, alt_background = false },
           cmp = true,
           gitsigns = true,
-          hop = true,
-          illuminate = { enabled = true },
           native_lsp = { enabled = true, inlay_hints = { background = true } },
-          neogit = true,
-          neotree = true,
-          semantic_tokens = true,
           treesitter = true,
           treesitter_context = true,
-          vimwiki = true,
           which_key = true,
         },
         highlight_overrides = {
@@ -72,25 +90,6 @@ return {
               GitSignsChange = { fg = colors.peach },
               LineNr = { fg = colors.overlay0 },
               LspInfoBorder = { link = "FloatBorder" },
-              NeoTreeDirectoryIcon = { fg = colors.subtext1 },
-              NeoTreeDirectoryName = { fg = colors.subtext1 },
-              NeoTreeFloatBorder = { link = "TelescopeResultsBorder" },
-              NeoTreeGitConflict = { fg = colors.red },
-              NeoTreeGitDeleted = { fg = colors.red },
-              NeoTreeGitIgnored = { fg = colors.overlay0 },
-              NeoTreeGitModified = { fg = colors.peach },
-              NeoTreeGitStaged = { fg = colors.green },
-              NeoTreeGitUnstaged = { fg = colors.red },
-              NeoTreeGitUntracked = { fg = colors.green },
-              NeoTreeIndent = { fg = colors.surface1 },
-              NeoTreeNormal = { bg = colors.mantle },
-              NeoTreeNormalNC = { bg = colors.mantle },
-              NeoTreeRootName = { fg = colors.subtext1, style = { "bold" } },
-              NeoTreeTabActive = { fg = colors.text, bg = colors.mantle },
-              NeoTreeTabInactive = { fg = colors.surface2, bg = colors.crust },
-              NeoTreeTabSeparatorActive = { fg = colors.mantle, bg = colors.mantle },
-              NeoTreeTabSeparatorInactive = { fg = colors.crust, bg = colors.crust },
-              NeoTreeWinSeparator = { fg = colors.base, bg = colors.base },
               NormalFloat = { bg = colors.base },
               Pmenu = { bg = colors.mantle, fg = "" },
               PmenuSel = { bg = colors.surface0, fg = "" },
@@ -325,47 +324,18 @@ return {
             return {
               IblIndent = { fg = colors.mantle },
               IblScope = { fg = colors.surface1 },
-
               LineNr = { fg = colors.surface1 },
             }
           end,
         },
       })
-    end,
-  },
-  {
-    "zenbones-theme/zenbones.nvim",
-    dependencies = "rktjmp/lush.nvim",
-    config = function()
-      vim.g.zenbones_darken_comments = 45
-      vim.cmd.colorscheme('catppuccin-mocha')
 
-
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        group = vim.api.nvim_create_augroup("wezterm_colorscheme", { clear = true }),
-        callback = function(args)
-          local colorschemes = {
-            ["catppuccin-frappe"] = "Catppuccin Frappe",
-            ["catppuccin-macchiato"] = "Catppuccin Macchiato",
-            ["catppuccin-latte"] = "Catppuccin Latte Custom",
-            ["catppuccin-mocha"] = "Catppuccin Mocha Custom",
-            ["rose-pine"] = "Rose Pine",
-            -- add more color schemes here ...
-          }
-          local colorscheme = colorschemes[args.match]
-          if not colorscheme then
-            return
-          end
-          -- Write the colorscheme to a file
-          local filename = vim.fn.expand("~/.config/wezterm/colorscheme")
-          assert(type(filename) == "string")
-          local file = io.open(filename, "w")
-          assert(file)
-          file:write(colorscheme)
-          file:close()
-          vim.notify("Setting WezTerm color scheme to " .. colorscheme, vim.log.levels.INFO)
-        end,
-      })
+      local theme = getTheme()
+      if theme == "Light" then
+        vim.cmd.colorscheme("catppuccin-latte")
+      else
+        vim.cmd.colorscheme("catppuccin-mocha")
+      end
     end,
   },
 }

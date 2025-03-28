@@ -7,16 +7,13 @@ local config = wezterm.config_builder()
 config.max_fps = 120
 
 -- This is where you actually apply your config choices
-config.enable_tab_bar = false
-config.use_fancy_tab_bar = true
-
 config.window_close_confirmation = 'NeverPrompt'
 config.window_decorations = "RESIZE" -- disable the title bar but keep the border, works with aerospace
 config.window_padding = {
   left = 10,
   right = 10,
   top = 8,
-  bottom = 8,
+  bottom = 0,
 }
 
 config.font = wezterm.font({
@@ -86,7 +83,8 @@ smart_splits.apply_to_config(config, {
   },
 })
 
-require("theme").apply_to_config(config)
 require('sessionizer').apply_to_config(config)
+local theme = require("theme").apply_to_config(config)
+require('tabs').apply_to_config(config, theme)
 
 return config

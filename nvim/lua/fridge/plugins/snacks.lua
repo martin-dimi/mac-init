@@ -145,7 +145,7 @@ return {
         -- Create some toggle mappings
         Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
         Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>ul")
-        Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
+        Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ut")
         Snacks.toggle.indent():map("<leader>ui")
         Snacks.toggle.dim():map("<leader>ud")
       end,
