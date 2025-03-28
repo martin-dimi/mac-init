@@ -65,8 +65,13 @@ bindkey -e
 bindkey '^n' history-search-backward
 bindkey '^p' history-search-forward
 
-eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+# NOTE FZF
+eval "$(fzf --zsh)"
+export FZF_DEFAULT_COMMAND='fd --hidden --strip-cwd-prefix --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='--height 50% --layout=default --border --color=hl:#2dd4bf'
 
 export NVM_COMPLETION=true
 export NVM_SYMLINK_CURRENT="true"

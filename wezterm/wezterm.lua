@@ -19,9 +19,9 @@ config.window_padding = {
   bottom = 8,
 }
 
--- "editor.fontLigatures": "'calt', 'ss01'",
 config.font = wezterm.font({
-  family = "Cascadia Code",
+  -- family = "Cascadia Code",
+  family = "JetBrainsMono Nerd Font",
   harfbuzz_features = {
     "cv02", -- alternative g
     "cv24", -- not equals with slash /=
@@ -36,7 +36,7 @@ config.font = wezterm.font({
     "ss09"  -- >>= <<= ||= |= ligatures
   }
 })
-config.font_size = 16.0
+config.font_size = 14.0
 
 wezterm.on("toggle-tabbar", function(window, _)
   local overrides = window:get_config_overrides() or {}
@@ -50,6 +50,7 @@ wezterm.on("toggle-tabbar", function(window, _)
   window:set_config_overrides(overrides)
 end)
 
+
 -- Keybdings
 config.keys = {
   { key = "d",         mods = "SUPER",       action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
@@ -57,8 +58,8 @@ config.keys = {
   { key = "w",         mods = "SUPER",       action = wezterm.action { CloseCurrentPane = { confirm = false } } },
 
   -- Makes history-search using k/j
-  { key = "j",         mods = "SUPER",       action = wezterm.action.SendKey { key = 'p', mods = 'CTRL' } },
-  { key = "k",         mods = "SUPER",       action = wezterm.action.SendKey { key = 'n', mods = 'CTRL' } },
+  { key = "j",         mods = "SUPER",       action = wezterm.action.SendKey { key = 'n', mods = 'CTRL' } },
+  { key = "k",         mods = "SUPER",       action = wezterm.action.SendKey { key = 'p', mods = 'CTRL' } },
 
   -- Makes SUPER + SHIFT + < and SUPER + SHIFT + > move current tab MoveTabRelative=-1
   { key = "<",         mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = -1 } },
@@ -72,7 +73,7 @@ config.keys = {
   { key = "Backspace", mods = "SUPER",       action = wezterm.action { SendString = "\x1B\x08" } },
 
   -- Toggle tabs
-  { key = "9",         mods = "SUPER",       action = wezterm.action.EmitEvent("toggle-tabbar") }
+  { key = "9",         mods = "SUPER",       action = wezterm.action.EmitEvent("toggle-tabbar") },
 }
 
 -- Setups pane navigation and resizging so it works with vim too
@@ -85,7 +86,7 @@ smart_splits.apply_to_config(config, {
   },
 })
 
-local theme = require 'theme'
-theme.apply_to_config(config)
+require("theme").apply_to_config(config)
+require('sessionizer').apply_to_config(config)
 
 return config
