@@ -159,38 +159,35 @@ f = [
 ] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
-# sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-#s = ['layout sticky tiling', 'mode main']
-
 alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
-# Browsers
-# [[on-window-detected]]
-# if.app-id = "company.thebrowser.Browser"
-# run = "move-node-to-workspace 1"
-# [[on-window-detected]]
-# if.app-id = 'com.apple.Safari'
-# run = 'move-node-to-workspace B'
-# [[on-window-detected]]
-# if.app-id = 'com.google.Chrome'
-# run = 'move-node-to-workspace B'
-
-# [[on-window-detected]]
-# if.app-id = 'com.mozilla.firefox'
-# run = 'move-node-to-workspace B'
-#
-# [[on-window-detected]]
-# if.app-id = "com.googlecode.iterm2"
-# run = "move-node-to-workspace 2"
-#
-# [[on-window-detected]]
-# if.app-id = "com.spotify.client"
-# run = "move-node-to-workspace M"
-
-# Fix for ghostty
+# Auto move things in places..
 [[on-window-detected]]
-if.app-id = "com.mitchellh.ghostty"
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = "com.spotify.client"
+run = "move-node-to-workspace 4"
+
+# To get an app-id use: aerospace list-apps
+# Make Messenger always floating
+[[on-window-detected]]
+if.app-id = "com.apple.MobileSMS"
 run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "net.whatsapp.WhatsApp"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.finder"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.ActivityMonitor"
+run = "layout floating"
+
