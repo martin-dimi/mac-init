@@ -34,8 +34,8 @@ function Dark()
 
   -- tab bar colors
   mocha.tab_bar.active_tab = {
-    fg_color = "#fff",    -- text
-    bg_color = "#485456", -- base
+    fg_color = "#ebdbb2", -- your light text color
+    bg_color = "#b15c31", -- copper orange
   }
   mocha.tab_bar.inactive_tab = {
     fg_color = mocha.foreground, -- text
