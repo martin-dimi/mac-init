@@ -28,15 +28,19 @@ function Dark()
     "#ebdbb2", -- bright white
   }
 
-  -- Mocha tab bar colors
-  mocha.tab_bar.background = "#141617"            -- crust
-  mocha.tab_bar.inactive_tab.bg_color = "#191b1c" -- mantle
-  mocha.tab_bar.new_tab.bg_color = "#191b1c"      -- mantle
-  mocha.tab_bar.active_tab.bg_color = "#1d2021"   -- base
-
-  -- Mocha selection colors
+  -- selection colors
   mocha.selection_fg = "#1d2021" -- base
   mocha.selection_bg = "#ebdbb2" -- text
+
+  -- tab bar colors
+  mocha.tab_bar.active_tab = {
+    fg_color = "#fff",    -- text
+    bg_color = "#485456", -- base
+  }
+  mocha.tab_bar.inactive_tab = {
+    fg_color = mocha.foreground, -- text
+    bg_color = mocha.background, -- mantle
+  }
 
   return mocha
 end
@@ -73,15 +77,20 @@ function Light()
     "#4c4f69", -- bright white
   }
 
-  -- Latte tab bar colors
-  latte.tab_bar.background = "#dce0e8"            -- crust
-  latte.tab_bar.inactive_tab.bg_color = "#e6e9ef" -- mantle
-  latte.tab_bar.new_tab.bg_color = "#e6e9ef"      -- mantle
-  latte.tab_bar.active_tab.bg_color = "#eff1f5"   -- base
-
-  -- Latte selection colors
+  -- selection colors
   latte.selection_fg = "#eff1f5" -- base
   latte.selection_bg = "#4c4f69" -- text
+
+  -- tab bar colors
+  latte.tab_bar.active_tab = {
+    fg_color = latte.ansi[5], -- text
+    bg_color = latte.ansi[1], -- base
+  }
+  latte.tab_bar.inactive_tab = {
+    fg_color = latte.foreground, -- text
+    bg_color = latte.background, -- mantle
+  }
+
 
   return latte
 end

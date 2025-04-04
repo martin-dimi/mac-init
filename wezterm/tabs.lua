@@ -4,17 +4,38 @@ local module = {}
 function module.apply_to_config(config, theme)
   local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
   tabline.setup({
-    options = { theme = theme },
+    options = {
+      theme = theme,
+      theme_overrides = {
+        normal_mode = {
+          b = { fg = theme.ansi[5], bg = theme.ansi[1] },
+          c = { fg = theme.foreground, bg = theme.background },
+        },
+
+        tab = {
+          active = {
+            fg = theme.tab_bar.active_tab.fg_color,
+            bg = theme.tab_bar.active_tab.bg_color,
+          },
+          inactive = {
+            fg = theme.tab_bar.inactive_tab.fg_color,
+            bg = theme.tab_bar.inactive_tab.bg_color,
+          },
+        },
+      },
+    },
     sections = {
       tabline_a = {},
       tabline_b = { 'workspace' },
       tabline_c = { ' ' },
       tab_active = {
         'index',
-        { 'cwd',    padding = { left = 0, right = 1 } },
-        { 'zoomed', padding = 0 },
+        { 'process', padding = { left = 0, right = 1 } },
       },
-      tab_inactive = { 'index', { 'process', padding = { left = 0, right = 1 } } },
+      tab_inactive = {
+        'index',
+        { 'process', padding = { left = 0, right = 1 } },
+      },
       tabline_x = { 'ram', 'cpu' },
       tabline_y = { 'datetime', 'battery' },
       tabline_z = {},
@@ -24,27 +45,3 @@ function module.apply_to_config(config, theme)
 end
 
 return module
-
--- config.enable_tab_bar = true
--- config.use_fancy_tab_bar = true
--- -- config.color_scheme = "Catppuccin Mocha Custom"
---
--- local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
--- bar.apply_to_config(config, {
---   separator = {
---     space = 1,
---     left_icon = "",
---     right_icon = "",
---     field_icon = "",
---   },
---   modules = {
---     spotify = { enabled = false },
---     workspace = { enabled = true },
---     leader = { enabled = false },
---     pane = { enabled = false },
---     username = { enabled = false },
---     hostname = { enabled = false },
---     clock = { enabled = true },
---     cwd = { enabled = true },
---   },
--- })

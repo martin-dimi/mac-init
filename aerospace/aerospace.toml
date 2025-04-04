@@ -167,6 +167,9 @@ alt-shift-l = ['join-with right', 'mode main']
 # Auto move things in places..
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace 1'
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
