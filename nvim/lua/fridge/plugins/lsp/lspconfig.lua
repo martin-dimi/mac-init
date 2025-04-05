@@ -1,7 +1,7 @@
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
-  dependencies = { "hrsh7th/cmp-nvim-lsp" },
+  dependencies = { "saghen/blink.cmp" },
   config = function()
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -36,7 +36,8 @@ return {
 
 
     local lspconfig = require("lspconfig")
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
+
     require("mason-lspconfig").setup_handlers {
       -- default handler for installed servers
       function(server_name)
