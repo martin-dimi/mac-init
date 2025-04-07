@@ -104,7 +104,8 @@ function module.apply_to_config(config)
     ["Light"] = light,
     ["Dark"] = dark,
   }
-  local file = io.open("/Users/fridge/.config/wezterm/colorscheme", "r")
+  local HOME = os.getenv("HOME")
+  local file = io.open(HOME .. "/.config/wezterm/colorscheme", "r")
   if file then
     local theme_name = file:read("*a")
     print("Using colorscheme: " .. theme_name)
