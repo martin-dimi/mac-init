@@ -4,6 +4,7 @@ local wezterm = require 'wezterm'
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+
 config.max_fps = 120
 
 -- This is where you actually apply your config choices
@@ -86,5 +87,6 @@ smart_splits.apply_to_config(config, {
 require('sessionizer').apply_to_config(config)
 local theme = require("theme").apply_to_config(config)
 require('tabs').apply_to_config(config, theme)
+require('nvim').apply_to_config(config)
 
 return config
