@@ -22,6 +22,7 @@ return {
 
     mason_lspconfig.setup({
       automatic_installation = true,
+      automatic_enable = true,
       ensure_installed = {
         "gopls",
         "lua_ls",

@@ -28,6 +28,7 @@ return {
       ["<C-k>"] = { 'select_prev', 'fallback_to_mappings' },
       ["<C-j>"] = { 'select_next', 'fallback_to_mappings' },
       ["<C-.>"] = { 'show', 'show_documentation', 'hide_documentation' },
+      ['<CR>'] = { 'accept', 'fallback' },
     },
 
     appearance = {
@@ -38,16 +39,15 @@ return {
 
     completion = {
       documentation = { auto_show = false },
-      ghost_text = { enabled = true },
+      ghost_text = { enabled = false },
     },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "avante", "lsp", "copilot", "path", "snippets", "buffer" },
+      default = { "lsp", "copilot", "path", "snippets", "buffer" },
       providers = {
         copilot = { name = "copilot", module = "blink-copilot", score_offset = 100, async = true, },
-        avante = { name = 'Avante', module = 'blink-cmp-avante', opts = {} }
       },
     },
 
