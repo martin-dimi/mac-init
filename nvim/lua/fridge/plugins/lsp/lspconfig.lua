@@ -36,7 +36,6 @@ return {
 
 
     -- Change the Diagnostic symbols in the sign column (gutter)
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
     vim.diagnostic.config({
       signs = {
         text = {
