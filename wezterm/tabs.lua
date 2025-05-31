@@ -30,11 +30,11 @@ function module.apply_to_config(config, theme)
       tabline_c = { ' ' },
       tab_active = {
         'index',
-        { 'process', padding = { left = 0, right = 1 } },
+        { 'cwd', padding = { left = 0, right = 1 } },
       },
       tab_inactive = {
         'index',
-        { 'process', padding = { left = 0, right = 1 } },
+        { 'cwd', padding = { left = 0, right = 1 } },
       },
       tabline_x = { 'ram', 'cpu' },
       tabline_y = { 'datetime', 'battery' },

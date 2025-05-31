@@ -75,3 +75,6 @@ eval "$(zoxide init --cmd cd zsh)"
 export NVM_COMPLETION=true
 export NVM_SYMLINK_CURRENT="true"
 zinit wait lucid light-mode for lukechilds/zsh-nvm
+. "/Users/fridge/.deno/env"
+# bun completions
+[ -s "/Users/fridge/.bun/_bun" ] && source "/Users/fridge/.bun/_bun"

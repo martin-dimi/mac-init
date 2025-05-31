@@ -12,17 +12,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth',               -- Detect tabstop and shiftwidth automatically
-  "nvim-lua/plenary.nvim",          -- lua functions that many plugins use
-  "christoomey/vim-tmux-navigator", -- tmux & split window navigation
+  spec = {
+    { import = "fridge.plugins" },
+    { import = "fridge.plugins.lsp" },
+    { import = "fridge.plugins.theme" }
+  },
 
-  { import = "fridge.plugins" },
-  { import = "fridge.plugins.lsp" }
-}, {
   change_detection = {
     notify = false,
   },
+
   checker = {
     enabled = true,
     notify = false,
