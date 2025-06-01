@@ -46,7 +46,11 @@ return {
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
       default = { "avante", "lsp", "copilot", "path", "snippets", "buffer" },
+      per_filetype = {
+        sql = { 'snippets', 'dadbod', 'buffer' },
+      },
       providers = {
+        dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
         copilot = { name = "copilot", module = "blink-copilot", score_offset = 100, async = true, },
         avante = {
           module = 'blink-cmp-avante',
