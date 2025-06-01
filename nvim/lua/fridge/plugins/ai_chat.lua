@@ -20,6 +20,16 @@ return {
       max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
       --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
     },
+    windows = {
+      ask = {
+        floating = false,
+        border = { " ", " ", " ", " ", " ", " ", " ", " " },
+        start_insert = false,
+      },
+    },
+    selector = {
+      provider = "snacks"
+    }
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",

@@ -59,7 +59,6 @@ return {
         "rebelot/kanagawa.nvim",
         lazy = false,
         priority = 1000,
-        theme = "dragon",
         opts = {
           overrides = function(colors)
             local theme = colors.theme
@@ -99,8 +98,8 @@ return {
       }
     },
     opts = {
-      dark_theme = "kanagawa-dragon",
-      light_theme = "kanagawa-dragon",
+      dark_theme = "kanagawa-wave",
+      light_theme = "kanagawa-lotus",
     }
   }
 }
