@@ -26,13 +26,19 @@ return {
           python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
         },
 
-        format_on_save = {
-          lsp_fallback = true,
-          lsp_format = "fallback",
-          async = false, -- not recommended to change
-          quiet = false, -- not recommended to change
-          timeout_ms = 3000,
-        },
+        format_on_save = function()
+          if vim.g.autoformat then
+            return {
+              lsp_fallback = true,
+              lsp_format = "fallback",
+              async = false, -- not recommended to change
+              quiet = false, -- not recommended to change
+              timeout_ms = 3000,
+            }
+          else
+            return
+          end
+        end,
       })
 
       -- JSON Formatter for selected text

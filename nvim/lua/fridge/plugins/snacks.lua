@@ -1,6 +1,34 @@
 ---@diagnostic disable: missing-fields
 ---@module "snacks"
 
+---@class snacks.dashboard.Config
+local dashboardConfig = {
+  preset = {
+    ---@type snacks.dashboard.Item[]
+    keys = {
+      { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+      { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+      { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+    },
+
+    header = [[
+███████╗██████╗ ██╗██████╗  ██████╗ ███████╗
+██╔════╝██╔══██╗██║██╔══██╗██╔════╝ ██╔════╝
+█████╗  ██████╔╝██║██║  ██║██║  ███╗█████╗  
+██╔══╝  ██╔══██╗██║██║  ██║██║   ██║██╔══╝  
+██║     ██║  ██║██║██████╔╝╚██████╔╝███████╗
+╚═╝     ╚═╝  ╚═╝╚═╝╚═════╝  ╚═════╝ ╚══════╝
+]]
+  },
+
+  sections = {
+    { section = "header" },
+    { section = "keys", icon = " ", title = "Keymaps", indent = 2, padding = 1 },
+    { section = "projects", icon = " ", title = "Projects", padding = 1, indent = 2 },
+    { section = "startup" },
+  },
+}
+
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -66,6 +94,7 @@ return {
         style = "custom_scratch",
       },
     },
+    dashboard = dashboardConfig
   },
   keys = {
     -- Picker
@@ -150,6 +179,8 @@ return {
   },
 
   init = function()
+    vim.g.autoformat = true -- Sets up the default value to be true
+
     vim.api.nvim_create_autocmd("User", {
       pattern = "VeryLazy",
       callback = function()
@@ -159,6 +190,19 @@ return {
         Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ut")
         Snacks.toggle.indent():map("<leader>ui")
         Snacks.toggle.dim():map("<leader>ud")
+
+        Snacks.toggle
+            .new({
+              id = "Format on Save",
+              name = "Format on Save",
+              get = function()
+                return vim.g.autoformat
+              end,
+              set = function(_)
+                vim.g.autoformat = not vim.g.autoformat
+              end,
+            })
+            :map("<leader>uf")
       end,
     })
   end,
