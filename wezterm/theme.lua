@@ -99,11 +99,13 @@ function module.apply_to_config(config)
   local dark = Dark()
   local light = Light()
 
-  local theme = dark
+  local kanagawa = wezterm.color.get_builtin_schemes()["kanagawabones"]
   config.color_schemes = {
     ["Light"] = light,
-    ["Dark"] = dark,
+    ["Dark"] = kanagawa,
   }
+  local theme = config.color_schemes["Dark"]
+
   local HOME = os.getenv("HOME")
   local file = io.open(HOME .. "/.config/wezterm/colorscheme", "r")
   if file then

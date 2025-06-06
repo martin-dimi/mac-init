@@ -11,15 +11,14 @@ function module.apply_to_config(config, theme)
           b = { fg = theme.ansi[5], bg = theme.ansi[1] },
           c = { fg = theme.foreground, bg = theme.background },
         },
-
         tab = {
           active = {
-            fg = theme.tab_bar.active_tab.fg_color,
-            bg = theme.tab_bar.active_tab.bg_color,
+            fg = theme.foreground, -- text
+            bg = theme.ansi[6],    -- base
           },
           inactive = {
-            fg = theme.tab_bar.inactive_tab.fg_color,
-            bg = theme.tab_bar.inactive_tab.bg_color,
+            fg = theme.foreground, -- text
+            bg = theme.background, -- mantle
           },
         },
       },
