@@ -95,10 +95,18 @@ return {
         opts = {
           variant = "main",
         }
+      },
+      {
+        "sainnhe/everforest",
+        config = function()
+          vim.g.everforest_enable_italic = true
+          vim.g.everforest_background = 'hard'
+          vim.g.everforest_better_performance = 1
+        end
       }
     },
     opts = {
-      dark_theme = "kanagawa-wave",
+      dark_theme = "kanagawa-wave", -- dragon is very cool
       light_theme = "kanagawa-lotus",
     }
   }
