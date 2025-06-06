@@ -1,30 +1,17 @@
 return {
-  "windwp/nvim-autopairs",
-  event = { "InsertEnter" },
-  dependencies = {
-    "hrsh7th/nvim-cmp",
+  "echasnovski/mini.pairs",
+  version = '*',
+  event = "VeryLazy",
+  opts = {
+    modes = { insert = true, command = true, terminal = false },
+    -- skip autopair when next character is one of these
+    skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
+    -- skip autopair when the cursor is inside these treesitter nodes
+    skip_ts = { "string" },
+    -- skip autopair when next character is closing pair
+    -- and there are more closing pairs than opening pairs
+    skip_unbalanced = true,
+    -- better deal with markdown code blocks
+    markdown = true,
   },
-  config = function()
-    -- import nvim-autopairs
-    local autopairs = require("nvim-autopairs")
-
-    -- configure autopairs
-    autopairs.setup({
-      check_ts = true, -- enable treesitter
-      ts_config = {
-        lua = { "string" }, -- don't add pairs in lua string treesitter nodes
-        javascript = { "template_string" }, -- don't add pairs in javscript template_string treesitter nodes
-        java = false, -- don't check treesitter on java
-      },
-    })
-
-    -- import nvim-autopairs completion functionality
-    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-
-    -- import nvim-cmp plugin (completions plugin)
-    local cmp = require("cmp")
-
-    -- make autopairs and completion work together
-    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-  end,
 }

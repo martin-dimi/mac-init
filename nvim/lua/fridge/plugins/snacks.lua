@@ -87,7 +87,7 @@ return {
     },
     { "<leader>sf", function() Snacks.picker.files({ exclude = { "*_test.go" } }) end, desc = "Find Files" },
     { "<leader>sg", function() Snacks.picker.grep({ exclude = { "*_test.go" } }) end,  desc = "Grep" },
-    { "<leader>.",  function() Snacks.picker.recent() end,                             desc = "Recent" },
+    -- { "<leader>.",  function() Snacks.picker.recent() end,                             desc = "Recent" },
     { "<leader>sr", function() Snacks.picker.resume() end,                             desc = "Resume" },
     { "<leader>sh", function() Snacks.picker.help() end,                               desc = "Help Pages" },
     { "<leader>st", function() Snacks.picker.colorschemes() end,                       desc = "Themes" },

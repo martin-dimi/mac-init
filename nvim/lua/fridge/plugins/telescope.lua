@@ -74,12 +74,12 @@ return {
     --   builtins.buffers({ sort_mru = true, ignore_current_buffer = true })
     -- end, { desc = 'Find existing buffers' })
 
-    keymap.set(
-      'n',
-      '<leader>.',
-      "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
-      { desc = 'Search Recent Files' }
-    )
+    -- keymap.set(
+    --   'n',
+    --   '<leader>.',
+    --   "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
+    --   { desc = 'Search Recent Files' }
+    -- )
 
     -- Copy current file path relative to project root
     keymap.set('n', '<leader>fY', function()
