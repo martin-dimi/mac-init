@@ -12,7 +12,7 @@ return {
     require("oil").setup({})
 
     -- Set up keymaps
-    --
-    vim.keymap.set("n", "<leader>.", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+    -- --
+    -- vim.keymap.set("n", "<leader>.", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
   end,
 }
