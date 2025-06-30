@@ -14,8 +14,8 @@ local dashboardConfig = {
     header = [[
 ███████╗██████╗ ██╗██████╗  ██████╗ ███████╗
 ██╔════╝██╔══██╗██║██╔══██╗██╔════╝ ██╔════╝
-█████╗  ██████╔╝██║██║  ██║██║  ███╗█████╗  
-██╔══╝  ██╔══██╗██║██║  ██║██║   ██║██╔══╝  
+█████╗  ██████╔╝██║██║  ██║██║  ███╗█████╗
+██╔══╝  ██╔══██╗██║██║  ██║██║   ██║██╔══╝
 ██║     ██║  ██║██║██████╔╝╚██████╔╝███████╗
 ╚═╝     ╚═╝  ╚═╝╚═╝╚═════╝  ╚═════╝ ╚══════╝
 ]]
@@ -119,6 +119,8 @@ return {
     { "<leader>.",  function() Snacks.picker.recent() end,                             desc = "Recent" },
     { "<leader>sr", function() Snacks.picker.resume() end,                             desc = "Resume" },
     { "<leader>sh", function() Snacks.picker.help() end,                               desc = "Help Pages" },
+
+
     { "<leader>st", function() Snacks.picker.colorschemes() end,                       desc = "Themes" },
     {
       "<leader>sG",
