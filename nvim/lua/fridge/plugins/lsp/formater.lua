@@ -8,7 +8,7 @@ return {
       conform.setup({
         formatters_by_ft = {
           -- Run both (sequentially) for golang.
-          go = { "gofmt", "goimports" },
+          go = { "gofmt", "goimports", "sort-imports" },
           sql = { "sqlfmt" },
           lua = { "stylua" },
 

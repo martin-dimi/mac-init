@@ -9,7 +9,7 @@ return {
         endpoint = 'https://api.anthropic.com',
         model = 'claude-sonnet-4-20250514',
         extra_request_body = {
-          temperature = 0,
+          temperature = 0.75,
           max_tokens = 20480,
         }
       },
