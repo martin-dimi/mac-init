@@ -195,6 +195,27 @@ return {
 
         Snacks.toggle
             .new({
+              id = "Copilot",
+              name = "Copilot",
+              get = function()
+                local client = vim.lsp.get_active_clients({ name = "copilot" })[1]
+                if not client then
+                  return false
+                end
+                return true
+              end,
+              set = function(val)
+                if val then
+                  vim.cmd("Copilot enable")
+                else
+                  vim.cmd("Copilot disable")
+                end
+              end,
+            })
+            :map("<leader>uc")
+
+        Snacks.toggle
+            .new({
               id = "Format on Save",
               name = "Format on Save",
               get = function()
