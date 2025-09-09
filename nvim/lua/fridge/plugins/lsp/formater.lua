@@ -8,7 +8,7 @@ return {
       conform.setup({
         formatters_by_ft = {
           -- Run both (sequentially) for golang.
-          go = { "gofmt", "goimports", "sort-imports" },
+          go = { "gofmt", "goimports" },
           sql = { "sqlfmt" },
           lua = { "stylua" },
 
@@ -22,8 +22,6 @@ return {
           markdown = { "prettier" },
           json = { "prettierd", "prettier", stop_after_first = true },
           yaml = { "prettierd", "prettier", stop_after_first = true },
-
-          python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
         },
 
         format_on_save = function()
