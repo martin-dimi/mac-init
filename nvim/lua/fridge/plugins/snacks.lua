@@ -153,6 +153,8 @@ return {
     { "gD",         function() Snacks.picker.lsp_declarations() end,    desc = "[G]oto [D]eclaration" },
     { "gr",         function() Snacks.picker.lsp_references() end,      nowait = true,                   desc = "[G]oto [R]eferences" },
     { "gI",         function() Snacks.picker.lsp_implementations() end, desc = "[G]oto [I]mplementation" },
+    { "<leader>D",  function() Snacks.picker.diagnostics() end,         desc = "[D]iagnostics" },
+    { "<leader>sw", function() Snacks.picker.grep_word() end,           desc = "[S]earch [W]ord",        mode = { "n", "x" } },
 
     -- git
     { "<leader>gg", function() Snacks.lazygit.open() end,               desc = "Lazygit" },
