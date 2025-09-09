@@ -4,7 +4,8 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local conform = require("conform")
-      local js_like = { "prettierd", "prettier", stop_after_first = true }
+      -- Run biome instead of biome-check to not do things like organiseImports
+      local js_like = { "biome-check", "prettierd", "prettier", stop_after_first = true }
 
       conform.setup({
         formatters_by_ft = {
