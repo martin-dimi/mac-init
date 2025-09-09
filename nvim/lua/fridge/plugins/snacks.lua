@@ -45,6 +45,8 @@ return {
       }
     },
 
+    lazygit = {},
+
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
@@ -153,6 +155,8 @@ return {
     { "gI",         function() Snacks.picker.lsp_implementations() end, desc = "[G]oto [I]mplementation" },
 
     -- git
+    { "<leader>gg", function() Snacks.lazygit.open() end,               desc = "Lazygit" },
+    { "<leader>go", function() Fridge.OpenInGithub() end,               desc = "Lazygit" },
     { "<leader>gb", function() Snacks.picker.git_branches() end,        desc = "Git Branches" },
     { "<leader>gl", function() Snacks.picker.git_log() end,             desc = "Git Log" },
     { "<leader>gL", function() Snacks.picker.git_log_line() end,        desc = "Git Log Line" },
