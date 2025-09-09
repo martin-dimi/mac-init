@@ -8,13 +8,9 @@ return {
   },
 
   config = function()
-    local mason = require("mason")
-    local mason_lspconfig = require("mason-lspconfig")
-
-    mason.setup()
-    mason_lspconfig.setup({
-      automatic_installation = true,
-      automatic_enable = true,
+    require("mason").setup()
+    require("mason-lspconfig").setup()
+    require("mason-tool-installer").setup({
       ensure_installed = {
         -- Lua
         "lua_ls",
@@ -30,6 +26,7 @@ return {
         "html",
         "emmet_ls",
         "cssls",
+        "eslint",
 
         -- Misc
         "jsonls",

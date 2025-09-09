@@ -4,6 +4,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local conform = require("conform")
+      local js_like = { "prettierd", "prettier", stop_after_first = true }
 
       conform.setup({
         formatters_by_ft = {
@@ -12,16 +13,16 @@ return {
           sql = { "sqlfmt" },
           lua = { "stylua" },
 
-          javascript = { "prettierd", "prettier", stop_after_first = true },
-          typescript = { "prettierd", "prettier", stop_after_first = true },
-          javascriptreact = { "prettierd", "prettier", stop_after_first = true },
-          typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-          css = { "prettierd", "prettier", stop_after_first = true },
-          html = { "prettierd", "prettier", stop_after_first = true },
+          javascript = js_like,
+          typescript = js_like,
+          javascriptreact = js_like,
+          typescriptreact = js_like,
+          css = js_like,
+          html = js_like,
 
           markdown = { "prettier" },
-          json = { "prettierd", "prettier", stop_after_first = true },
-          yaml = { "prettierd", "prettier", stop_after_first = true },
+          json = js_like,
+          yaml = js_like,
         },
 
         format_on_save = function()
