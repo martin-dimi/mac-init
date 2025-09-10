@@ -37,6 +37,7 @@
   "rose-pine": { "branch": "main", "commit": "72a04c4065345b51b56aed4859ea1d884f734097" },
   "scrollEOF.nvim": { "branch": "master", "commit": "aeedfad14e4a0cfa31b44b531c1ad8fd4696b551" },
   "smart-splits.nvim": { "branch": "master", "commit": "51e400b0bb6cbfd48e56d1baca250f34028cf1d3" },
+  "smear-cursor.nvim": { "branch": "main", "commit": "4b86df8a0c5f46e708616b21a02493bb0e47ecbd" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "3610dc7dc91f06aa98b11dca5cc30dfa98626b7e" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "1f08ed60cafc8f6168b72b80be2b2ea149813e55" },
