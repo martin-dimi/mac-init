@@ -1,5 +1,5 @@
 return {
-  "fridge/theme-loader",
-  name = "theme-loader",
-  opts = {}
+	"fridge/theme-loader",
+	name = "theme-loader",
+	opts = {},
 }

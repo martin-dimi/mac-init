@@ -8,21 +8,15 @@ function M.open_in_github()
 
 	-- Get repo root
 	local repo_root = Job:new({ command = "git", args = { "rev-parse", "--show-toplevel" } }):sync()[1]
-	if not repo_root then
-		return
-	end
+	if not repo_root then return end
 
 	-- Get current branch name (or HEAD SHA if in detached HEAD)
 	local branch = Job:new({ command = "git", args = { "rev-parse", "--abbrev-ref", "HEAD" } }):sync()[1]
-	if branch == "HEAD" then
-		branch = Job:new({ command = "git", args = { "rev-parse", "HEAD" } }):sync()[1]
-	end
+	if branch == "HEAD" then branch = Job:new({ command = "git", args = { "rev-parse", "HEAD" } }):sync()[1] end
 
 	-- Get GitHub remote URL and transform it
 	local remote_url = Job:new({ command = "git", args = { "config", "--get", "remote.origin.url" } }):sync()[1]
-	if not remote_url then
-		return
-	end
+	if not remote_url then return end
 
 	-- Convert SSH to HTTPS if needed
 	local github_url = remote_url:gsub("git@github.com:", "https://github.com/")

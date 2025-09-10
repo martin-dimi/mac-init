@@ -10,16 +10,16 @@ opt.number = true
 opt.pumheight = 10
 
 -- tabs & indent
-opt.tabstop = 2       -- 2 spaces for tabs (prettier default)
-opt.shiftwidth = 2    -- 2 spaces for indent width
-opt.expandtab = true  -- expand tab to spaces
+opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+opt.shiftwidth = 2 -- 2 spaces for indent width
+opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
 opt.wrap = false
 
 -- search
 opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true  -- if you include mixed caes in your search, assumes you want case sensitive
+opt.smartcase = true -- if you include mixed caes in your search, assumes you want case sensitive
 
 -- visual
 -- opt.background = "dark" -- default to dark theme
@@ -29,7 +29,7 @@ opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 opt.updatetime = 250
 
 -- random
-opt.backspace = "indent,eol,start"  -- allow backspace on indent, eof or insert start position
+opt.backspace = "indent,eol,start" -- allow backspace on indent, eof or insert start position
 opt.clipboard:append("unnamedplus") -- use system clipboard as default
 
 -- split
@@ -43,7 +43,7 @@ opt.breakindent = true
 opt.undofile = true
 
 -- Preview substitutions live, as you type!
-opt.inccommand = 'split'
+opt.inccommand = "split"
 
 -- Show which line your cursor is on
 opt.cursorline = true
@@ -54,12 +54,10 @@ opt.scrolloff = 10
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function() vim.highlight.on_yank() end,
 })
 
 -- Enable spell checking
