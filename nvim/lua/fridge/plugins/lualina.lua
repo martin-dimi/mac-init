@@ -48,8 +48,8 @@ return {
 						path = 4, -- 2 for full path
 						symbols = {
 							modified = "  ",
-							-- readonly = "  ",
-							-- unnamed = "  ",
+							readonly = "  ",
+							unnamed = "  ",
 						},
 					},
 					{ "fancy_diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },

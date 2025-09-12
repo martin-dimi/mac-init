@@ -8,11 +8,16 @@ return {
 			local js_like = { "biome-check", "prettierd", "prettier", stop_after_first = true }
 
 			conform.setup({
+				-- Use with :ConformInfo
+				-- log_level = vim.log.levels.DEBUG,
+
 				formatters = {
 					biome = { require_cwd = true },
 					["biome-check"] = { require_cwd = true },
-					prettierd = { require_cwd = true },
 					prettier = { require_cwd = true },
+
+					-- Default to prettierd
+					-- prettierd = { require_cwd = true },
 				},
 				formatters_by_ft = {
 					-- Run both (sequentially) for golang.
