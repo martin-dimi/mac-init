@@ -274,6 +274,35 @@ return {
 			desc = "Toggle Scratch Buffer",
 		},
 		{
+			"<leader>bn",
+			function() Snacks.picker.files({ cwd = os.getenv("NOTES") .. "/Named" }) end,
+			desc = "Select Named Scratch",
+		},
+		{
+			"<leader>bN",
+			function()
+				local scratch_dir = (os.getenv("NOTES") or "~/.notes") .. "/Named"
+				if vim.fn.isdirectory(scratch_dir) == 0 then vim.fn.mkdir(scratch_dir, "p") end
+
+				-- Open the last modified file in the Named directory (output of 'ls -Art | tail -n 1')
+				local latest_file_name = vim.fn.system("ls -Art " .. vim.fn.shellescape(scratch_dir) .. " | tail -n 1"):gsub("%s+$", "")
+
+				-- Handle case where directory is empty
+				if latest_file_name == "" then
+					latest_file_name = "note_" .. os.date("%Y%m%d_%H%M%S")
+				else
+					-- Remove .md extension if present to avoid double extension
+					latest_file_name = latest_file_name:gsub("%.md$", "")
+				end
+
+				Snacks.scratch.open({
+					ft = "markdown",
+					file = string.format("%s/%s.md", scratch_dir, latest_file_name),
+				})
+			end,
+			desc = "Select latest Named",
+		},
+		{
 			"<leader>bS",
 			function() Snacks.picker.files({ cwd = os.getenv("NOTES") }) end,
 			desc = "Select Scratch Buffer",

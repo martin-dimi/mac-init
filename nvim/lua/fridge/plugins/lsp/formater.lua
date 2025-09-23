@@ -35,6 +35,8 @@ return {
 					markdown = { "prettier" },
 					json = js_like,
 					yaml = js_like,
+
+					python = { "ruff_format", "ruff_organize_imports ", "ruff_fix " },
 				},
 
 				format_on_save = function()

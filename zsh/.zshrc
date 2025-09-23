@@ -34,6 +34,7 @@ source $ZDOTDIR/aliases.sh
 source $ZDOTDIR/paths.sh
 [ -f $ZDOTDIR/secrets.sh ] && source $ZDOTDIR/secrets.sh
 [ -f $ZDOTDIR/conda.sh ] && source $ZDOTDIR/conda.sh
+[ -f $ZDOTDIR/mistral.sh ] && source $ZDOTDIR/mistral.sh
 
 # Plugins
 zinit light zsh-users/zsh-autosuggestions
@@ -74,6 +75,5 @@ eval "$(zoxide init --cmd cd zsh)"
 export NVM_COMPLETION=true
 export NVM_SYMLINK_CURRENT="true"
 zinit wait lucid light-mode for lukechilds/zsh-nvm
-. "/Users/fridge/.deno/env"
 # bun completions
 [ -s "/Users/fridge/.bun/_bun" ] && source "/Users/fridge/.bun/_bun"

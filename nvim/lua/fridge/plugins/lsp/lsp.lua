@@ -32,6 +32,10 @@ return {
 				-- Misc
 				"jsonls",
 				"dockerls",
+
+				-- Python
+				"ruff",
+				"mypy",
 			},
 		})
 

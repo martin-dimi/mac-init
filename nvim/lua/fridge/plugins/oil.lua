@@ -9,7 +9,11 @@ return {
 
 	opts = {},
 	config = function(_, opts)
-		require("oil").setup({})
+		require("oil").setup({
+			view_options = {
+				show_hidden = true,
+			},
+		})
 
 		-- Set up keymaps
 		-- --

@@ -22,8 +22,8 @@ function module.apply_to_config(config)
   end
 
   config.keys = config.keys or {}
-  addKey({ mods = "CTRL", key = "a", action = sessionizer.show })
-  addKey({ mods = "CTRL", key = "m", action = sessionizer.switch_to_most_recent })
+--  addKey({ mods = "CTRL", key = "a", action = sessionizer.show })
+--  addKey({ mods = "CTRL", key = "m", action = sessionizer.switch_to_most_recent })
 end
 
 return module

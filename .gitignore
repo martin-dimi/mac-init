@@ -9,6 +9,7 @@ zsh/.zcompdump
 zsh/.zsh_sessions
 zsh/secrets.sh
 zsh/gcloud.sh
+zsh/mistral.sh
 
 node_modules/
 
