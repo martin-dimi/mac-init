@@ -276,7 +276,7 @@ return {
 		{
 			"<leader>bm",
 			function()
-				local scratch_dir = (os.getenv("NOTES") or "~/.notes") .. "/Daily"
+				local scratch_dir = (os.getenv("NOTES") or "~/.notes") .. "/Monthly"
 				if vim.fn.isdirectory(scratch_dir) == 0 then vim.fn.mkdir(scratch_dir, "p") end
 				local date = os.date("%Y-%m-%b")
 				Snacks.scratch.open({
