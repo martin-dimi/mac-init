@@ -3,6 +3,8 @@ github-copilot
 pgcli
 gcloud
 stripe
+htop
+uv
 
 zsh/.zsh_history
 zsh/.zcompdump

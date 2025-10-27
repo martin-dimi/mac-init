@@ -33,8 +33,17 @@ return {
 		event = "VeryLazy",
 		version = false, -- Never set this value to "*"! Never!
 		opts = {
-			provider = "claude",
+			provider = "mistral",
 			providers = {
+				mistral = {
+					api_key_name = "MISTRAL_API_KEY",
+					endpoint = "https://api.mistral.ai/v1/",
+					model = "mistral-large-latest",
+					extra_request_body = {
+						max_tokens = 4096, -- to avoid using max_completion_tokens
+					},
+					__inherited_from = "openai",
+				},
 				claude = {
 					endpoint = "https://api.anthropic.com",
 					model = "claude-sonnet-4-20250514",
