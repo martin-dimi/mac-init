@@ -274,17 +274,17 @@ return {
 			desc = "Toggle [M]onth Scratch Buffer",
 		},
 		{
-			"<leader>bw",
+			"<leader>bm",
 			function()
 				local scratch_dir = (os.getenv("NOTES") or "~/.notes") .. "/Daily"
 				if vim.fn.isdirectory(scratch_dir) == 0 then vim.fn.mkdir(scratch_dir, "p") end
-				local date = os.date("%Y-%m-%w")
+				local date = os.date("%Y-%m-%b")
 				Snacks.scratch.open({
 					ft = "markdown",
 					file = string.format("%s/%s.md", scratch_dir, date),
 				})
 			end,
-			desc = "Toggle [W]ay Scratch Buffer",
+			desc = "Toggle [M]onth Scratch Buffer",
 		},
 		{
 			"<leader>bn",
