@@ -20,6 +20,7 @@
 ```bash
 brew install wezterm
 brew install lsd
+brew install tree
 brew install nvim
 brew install starship
 ```
