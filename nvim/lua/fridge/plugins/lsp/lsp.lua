@@ -10,6 +10,9 @@ return {
 	config = function()
 		require("mason").setup()
 		require("mason-lspconfig").setup()
+
+		-- TODO: ty LSP for Python (not in mason yet)
+		vim.lsp.enable("ty")
 		require("mason-tool-installer").setup({
 			ensure_installed = {
 				-- Lua
