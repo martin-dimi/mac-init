@@ -63,3 +63,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Enable spell checking
 opt.spelllang = "en_us"
 opt.spell = true
+
+-- Make mdx be treated as markdown
+vim.filetype.add({
+	extension = {
+		mdx = "markdown",
+	},
+})
