@@ -23,6 +23,20 @@ brew install lsd
 brew install tree
 brew install nvim
 brew install starship
+brew install opencode
+```
+
+## LLM Setup
+Using [https://github.com/simonw/llm](simonw/llm) for inline terminal AI usage.
+To set it up:
+```bash
+brew install llm
+```
+
+And then install the following plugins:
+```bash
+llm install llm-cmd
+llm install llm-anthropic
 ```
 
 ## TODOs
