@@ -1,17 +1,17 @@
 return {
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		opts = {
-			suggestion = { enabled = false },
-			panel = { enabled = false },
-			filetypes = {
-				markdown = true,
-				help = true,
-			},
-		},
-	},
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	opts = {
+	-- 		suggestion = { enabled = false },
+	-- 		panel = { enabled = false },
+	-- 		filetypes = {
+	-- 			markdown = true,
+	-- 			help = true,
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"NickvanDyke/opencode.nvim",
 		dependencies = {
@@ -31,7 +31,7 @@ return {
 			vim.o.autoread = true
 
 			vim.keymap.set({ "n", "x" }, "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode…" })
-			vim.keymap.set({ "n", "t" }, "<leader>ot", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
+			vim.keymap.set("n", "<leader>ot", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
 		end,
 	},
 

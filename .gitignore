@@ -5,6 +5,7 @@ gcloud
 stripe
 htop
 uv
+gh
 
 zsh/.zsh_history
 zsh/.zcompdump
@@ -14,6 +15,7 @@ zsh/gcloud.sh
 zsh/mistral.sh
 
 node_modules/
+raycast
 
 qBittorrent/
 

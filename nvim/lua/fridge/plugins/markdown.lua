@@ -5,7 +5,6 @@ return {
 	---@type render.md.UserConfig
 	opts = {
 		file_types = { "markdown", "Avante" },
-		-- render_modes = { 'n', 'c', 't' },
-		render_modes = false,
+		render_modes = { "n", "c" },
 	},
 }

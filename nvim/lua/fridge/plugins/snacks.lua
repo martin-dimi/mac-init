@@ -136,11 +136,6 @@ return {
 			desc = "Grep",
 		},
 		{
-			"<leader>.",
-			function() Snacks.picker.recent() end,
-			desc = "Recent",
-		},
-		{
 			"<leader>sr",
 			function() Snacks.picker.resume() end,
 			desc = "Resume",
