@@ -29,7 +29,17 @@ return {
 			["<C-j>"] = { "select_next", "fallback_to_mappings" },
 			["<C-.>"] = { "show", "show_documentation", "hide_documentation" },
 			["<CR>"] = { "accept", "fallback" },
-			["<A-y>"] = require("minuet").make_blink_map(),
+
+			["<Tab>"] = {
+				"snippet_forward",
+				function() -- sidekick next edit suggestion
+					return require("sidekick").nes_jump_or_apply()
+				end,
+				function() -- if you are using Neovim's native inline completions
+					return vim.lsp.inline_completion.get()
+				end,
+				"fallback",
+			},
 		},
 
 		appearance = {
@@ -47,21 +57,11 @@ return {
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lsp", "minuet", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer" },
 			per_filetype = {
 				sql = { "snippets", "buffer" },
 			},
-			providers = {
-				minuet = {
-					name = "minuet",
-					module = "minuet.blink",
-					async = true,
-					-- Should match minuet.config.request_timeout * 1000,
-					-- since minuet.config.request_timeout is in seconds
-					timeout_ms = 3000,
-					score_offset = 50, -- Gives minuet higher priority among suggestions
-				},
-			},
+			providers = {},
 		},
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

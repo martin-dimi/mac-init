@@ -61,6 +61,10 @@ return {
 		},
 		picker = {
 			enabled = true,
+			actions = {
+				sidekick_send = function(...) return require("sidekick.cli.picker.snacks").send(...) end,
+			},
+
 			layout = {
 				position = "bottom",
 				preset = "ivy",
@@ -75,6 +79,10 @@ return {
 					keys = {
 						["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
 						["<c-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+						["<a-a>"] = {
+							"sidekick_send",
+							mode = { "n", "i" },
+						},
 					},
 				},
 			},
