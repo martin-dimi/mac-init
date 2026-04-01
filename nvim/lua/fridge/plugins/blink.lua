@@ -29,6 +29,7 @@ return {
 			["<C-j>"] = { "select_next", "fallback_to_mappings" },
 			["<C-.>"] = { "show", "show_documentation", "hide_documentation" },
 			["<CR>"] = { "accept", "fallback" },
+			["<A-y>"] = require("minuet").make_blink_map(),
 		},
 
 		appearance = {
@@ -40,23 +41,25 @@ return {
 		completion = {
 			documentation = { auto_show = false },
 			ghost_text = { enabled = false },
+			trigger = { prefetch_on_insert = false },
 		},
 
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "avante", "lsp", "copilot", "path", "snippets", "buffer" },
+			default = { "lsp", "minuet", "path", "snippets", "buffer" },
 			per_filetype = {
 				sql = { "snippets", "buffer" },
 			},
 			providers = {
-				copilot = { name = "copilot", module = "blink-copilot", score_offset = 100, async = true },
-				avante = {
-					module = "blink-cmp-avante",
-					name = "Avante",
-					opts = {
-						-- options for blink-cmp-avante
-					},
+				minuet = {
+					name = "minuet",
+					module = "minuet.blink",
+					async = true,
+					-- Should match minuet.config.request_timeout * 1000,
+					-- since minuet.config.request_timeout is in seconds
+					timeout_ms = 3000,
+					score_offset = 50, -- Gives minuet higher priority among suggestions
 				},
 			},
 		},
