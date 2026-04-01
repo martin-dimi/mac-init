@@ -5,7 +5,6 @@ return {
 	build = ":TSUpdate",
 	config = function()
 		-- import nvim-treesitter plugin
-		require("nvim-treesitter").setup({})
 		require("nvim-treesitter").install({
 			"bash",
 			"css",
