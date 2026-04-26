@@ -1,11 +1,10 @@
-return {}
--- return {
--- 	"MeanderingProgrammer/render-markdown.nvim",
--- 	ft = { "markdown", "Avante" },
--- 	---@module 'render-markdown'
--- 	---@type render.md.UserConfig
--- 	opts = {
--- 		file_types = { "markdown" },
--- 		render_modes = { "n", "c" },
--- 	},
--- }
+return {
+	"MeanderingProgrammer/render-markdown.nvim",
+	ft = { "markdown", "Avante" },
+	---@module 'render-markdown'
+	---@type render.md.UserConfig
+	opts = {
+		file_types = { "markdown" },
+		render_modes = { "n", "c" },
+	},
+}

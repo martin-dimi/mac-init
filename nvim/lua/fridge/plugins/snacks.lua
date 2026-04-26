@@ -1,6 +1,21 @@
 ---@diagnostic disable: missing-fields
 ---@module "snacks"
 
+local function is_markdown_buf() return vim.bo.filetype == "markdown" end
+
+local function get_render_markdown()
+	if not is_markdown_buf() then return false end
+	local ok, state = pcall(require, "render-markdown.state")
+	if not ok then return false end
+	local cfg = state.get(vim.api.nvim_get_current_buf())
+	return cfg and cfg.enabled or false
+end
+
+local function set_render_markdown(enable)
+	if not is_markdown_buf() then return end
+	require("render-markdown").set_buf(enable)
+end
+
 ---@class snacks.dashboard.Config
 local dashboardConfig = {
 	preset = {
@@ -328,6 +343,15 @@ return {
 						set = function(_) vim.g.autoformat = not vim.g.autoformat end,
 					})
 					:map("<leader>uf")
+
+				Snacks.toggle
+					.new({
+						id = "Render Markdown",
+						name = "Render Markdown",
+						get = get_render_markdown,
+						set = set_render_markdown,
+					})
+					:map("<leader>um")
 			end,
 		})
 	end,
