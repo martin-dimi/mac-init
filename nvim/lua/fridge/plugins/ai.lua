@@ -1,7 +1,8 @@
 return {
 	"folke/sidekick.nvim",
 	opts = {
-		-- add any options here
+		-- Disable Next Edit Suggestions
+		nes = { enabled = false },
 	},
 	keys = {
 		{
