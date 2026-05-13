@@ -1,8 +1,25 @@
 return {
 	"folke/sidekick.nvim",
+	url = "https://github.com/martin-dimi/sidekick.nvim",
 	opts = {
 		-- Disable Next Edit Suggestions
-		nes = { enabled = false },
+		nes = { enabled = true },
+		copilot = {
+			status = {
+				enabled = false,
+			},
+		},
+		cli = {
+			mux = {
+				backend = "wezterm",
+				enabled = true,
+				create = "split",
+				split = {
+					-- split toward whichever axis has more space
+					vertical = vim.o.lines * 2 > vim.o.columns,
+				},
+			},
+		},
 	},
 	keys = {
 		{

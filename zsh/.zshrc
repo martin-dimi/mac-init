@@ -29,6 +29,7 @@ eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND='fd --hidden --strip-cwd-prefix -E .git -E "{*.ttf,*.png}"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--height 50% --layout=default --border --color=hl:#2dd4bf'
+export EDITOR='vim'
 
 source $ZDOTDIR/aliases.sh
 source $ZDOTDIR/paths.sh
