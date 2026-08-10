@@ -1,4 +1,5 @@
 # Integrations
+export TERM=wezterm
 eval "$(starship init zsh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -36,6 +37,8 @@ source $ZDOTDIR/paths.sh
 [ -f $ZDOTDIR/secrets.sh ] && source $ZDOTDIR/secrets.sh
 [ -f $ZDOTDIR/conda.sh ] && source $ZDOTDIR/conda.sh
 [ -f $ZDOTDIR/mistral.sh ] && source $ZDOTDIR/mistral.sh
+[ -f $ZDOTDIR/claude.sh ] && source $ZDOTDIR/claude.sh
+[ -f $ZDOTDIR/vpn.sh ] && source $ZDOTDIR/vpn.sh
 
 # Plugins
 zinit light zsh-users/zsh-autosuggestions
