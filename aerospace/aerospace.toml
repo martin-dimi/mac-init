@@ -139,6 +139,7 @@ alt-shift-n = 'move-node-to-workspace N' # Notes
 alt-shift-p = 'move-node-to-workspace P' # Productivity
 alt-shift-s = 'move-node-to-workspace S' # Spotify
 alt-shift-t = 'move-node-to-workspace T' # Terminal
+alt-shift-m = 'move-node-to-workspace M' # Music
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
