@@ -3,7 +3,7 @@ return {
 	url = "https://github.com/martin-dimi/sidekick.nvim",
 	opts = {
 		-- Disable Next Edit Suggestions
-		nes = { enabled = true },
+		nes = { enabled = false },
 		copilot = {
 			status = {
 				enabled = false,
