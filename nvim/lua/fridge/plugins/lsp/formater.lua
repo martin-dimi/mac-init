@@ -25,6 +25,7 @@ return {
 					sql = { "sqlfmt" },
 					lua = { "stylua" },
 
+					astro = js_like,
 					javascript = js_like,
 					typescript = js_like,
 					javascriptreact = js_like,

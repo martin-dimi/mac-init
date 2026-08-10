@@ -13,6 +13,7 @@ return {
 			"go",
 			"html",
 			"javascript",
+			"astro",
 			"json",
 			"json",
 			"lua",

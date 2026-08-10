@@ -11,6 +11,23 @@ return {
 		require("mason").setup()
 		require("mason-lspconfig").setup()
 
+		vim.lsp.config("astro", {
+			before_init = function(_, config)
+				local function has_typescript_sdk(tsdk)
+					return vim.iter({ "tsserverlibrary.js", "typescript.js", "tsserver.js" }):any(function(filename) return vim.uv.fs_stat(vim.fs.joinpath(tsdk, filename)) ~= nil end)
+				end
+
+				local tsdk = require("lspconfig.util").get_typescript_server_path(config.root_dir)
+				if not has_typescript_sdk(tsdk) then
+					local npm_root = vim.fn.systemlist("npm root -g")
+					if vim.v.shell_error == 0 and npm_root[1] then tsdk = vim.fs.joinpath(npm_root[1], "typescript", "lib") end
+				end
+
+				config.init_options.typescript.tsdk = tsdk
+			end,
+		})
+		vim.lsp.enable("astro")
+
 		vim.lsp.config("tailwindcss", {
 			settings = {
 				tailwindCSS = {
@@ -64,6 +81,7 @@ return {
 				"goimports",
 
 				-- Web stuff
+				"astro",
 				"ts_ls",
 				"tailwindcss",
 				"html",
