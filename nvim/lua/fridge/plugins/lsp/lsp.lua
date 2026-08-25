@@ -113,6 +113,9 @@ return {
 			},
 		})
 
+		-- Inline completions (copilot ghost text), toggled globally with <leader>uc
+		vim.lsp.inline_completion.enable(true)
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
@@ -120,10 +123,6 @@ return {
 					mode = mode or "n"
 					vim.keymap.set(mode, keys, func, { buffer = ev.buf, desc = "LSP: " .. desc })
 				end
-
-				local bufnr = ev.buf
-				local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
-				if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, bufnr) then vim.lsp.inline_completion.enable(true, { bufnr = bufnr }) end
 
 				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })

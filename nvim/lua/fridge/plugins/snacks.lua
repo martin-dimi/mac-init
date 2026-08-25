@@ -320,18 +320,8 @@ return {
 					.new({
 						id = "Copilot",
 						name = "Copilot",
-						get = function()
-							local client = vim.lsp.get_active_clients({ name = "copilot" })[1]
-							if not client then return false end
-							return true
-						end,
-						set = function(val)
-							if val then
-								vim.cmd("Copilot enable")
-							else
-								vim.cmd("Copilot disable")
-							end
-						end,
+						get = function() return vim.lsp.inline_completion.is_enabled() end,
+						set = function(val) vim.lsp.inline_completion.enable(val) end,
 					})
 					:map("<leader>uc")
 

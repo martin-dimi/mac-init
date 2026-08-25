@@ -2,7 +2,6 @@ return {
 	"saghen/blink.cmp",
 	dependencies = {
 		"rafamadriz/friendly-snippets",
-		"fang2hou/blink-copilot",
 		"Kaiser-Yang/blink-cmp-avante",
 	},
 	version = "1.*",
