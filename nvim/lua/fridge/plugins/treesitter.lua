@@ -25,6 +25,7 @@ return {
 			"vim",
 			"vimdoc",
 			"yaml",
+			"sql",
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
