@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(bun --version)",
+      "Bash(git init *)",
+      "Bash(bunx create-expo-app@latest mobile --template default --no-install)",
+      "Bash(bun create *)",
+      "Bash(bun install *)",
+      "Bash(bun x *)",
+      "Bash(bun fix *)",
+      "Bash(docker compose *)",
+      "Bash(cp .env.example .env)",
+      "Bash(openssl rand *)",
+      "Bash(sed -i '' \"s|JWT_SECRET=.*|JWT_SECRET=$\\(openssl rand -hex 32\\)|\" .env)",
+      "Bash(bun run *)",
+      "Bash(bunx expo *)",
+      "Bash(bun add *)",
+      "Bash(curl -s -m 3 http://localhost:3737/health)",
+      "Bash(ipconfig getifaddr *)",
+      "Bash(find node_modules/.bun/react-native-device-activity@* -name \"*.d.ts\")",
+      "Bash(bun pm *)",
+      "Bash(npm view *)"
+    ],
+    "defaultMode": "auto"
+  },
+  "model": "opus[1m]",
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": false,
+    "commit-commands@claude-plugins-official": false,
+    "context7@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": false,
+    "claude-md-management@claude-plugins-official": false,
+    "linear@claude-plugins-official": false,
+    "code-simplifier@claude-plugins-official": false,
+    "posthog@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": false,
+    "humanizer@skills-dir": false,
+    "cc-plugin-you-should-know@builtin": true,
+    "revenuecat@claude-plugins-official": true,
+    "brand-voice@synced": false,
+    "design@synced": false
+  },
+  "extraKnownMarketplaces": {
+    "web-asset-generator-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "alonw0/web-asset-generator"
+      }
+    },
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      },
+      "autoUpdate": true
+    },
+    "expo-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "expo/skills"
+      }
+    },
+    "rorkai": {
+      "source": {
+        "source": "github",
+        "repo": "rorkai/app-store-connect-cli-skills"
+      }
+    }
+  },
+  "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-fable-5": {
+      "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
+  "tui": "default",
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "editorMode": "vim",
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
+  "mcpServers": {
+    "XcodeBuildMCP": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "xcodebuildmcp@latest",
+        "mcp"
+      ]
+    }
+  }
+}

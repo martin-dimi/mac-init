@@ -1,0 +1,1 @@
+{ "name": "branding-tools", "private": true, "type": "module", "dependencies": { "playwright": "latest" } }

@@ -35,7 +35,7 @@ export EDITOR='vim'
 source $ZDOTDIR/aliases.sh
 source $ZDOTDIR/paths.sh
 [ -f $ZDOTDIR/secrets.sh ] && source $ZDOTDIR/secrets.sh
-[ -f $ZDOTDIR/claude.sh ] && source $ZDOTDIR/claude.sh
+[ -f $HOME/.config/claude/env.sh ] && source $HOME/.config/claude/env.sh
 [ -f $ZDOTDIR/vpn.sh ] && source $ZDOTDIR/vpn.sh
 
 
